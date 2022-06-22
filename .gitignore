@@ -1,0 +1,9 @@
+# for mac users
+.DS_Store
+
+# 
+node_modules
+
+# ENV
+.env
+# etc
