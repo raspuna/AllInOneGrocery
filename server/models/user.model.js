@@ -23,6 +23,23 @@ const UserSchema = new mongoose.Schema(
       required: [true, "Password is required"],
       minlength: [6, "Password must be 6 characters or longer"],
     },
+    address: {
+      type: String,
+    },
+    addressDetail: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
+    state: {
+      type: String,
+    },
+    zipcode: {
+      type: String,
+      required: [true, "Zipcode is required"],
+      length: [5, "zip code must be 5 letters"],
+    },
   },
   { timestamps: true }
 );

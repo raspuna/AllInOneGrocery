@@ -38,7 +38,7 @@ function LogIn() {
     <div>
       <Form onSubmit={submitHandler}>
         <FormGroup>
-          <Form.Label>Email:</Form.Label>
+          <Form.Label>Email(ID):</Form.Label>
           <Form.Control
             type="text"
             value={loginInfo.email}
