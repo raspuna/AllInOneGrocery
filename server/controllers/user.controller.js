@@ -73,7 +73,19 @@ const logout = (req, res) => {
   res.clearCookie("usertoken");
   res.status(200).json({ msg: "logout" });
 };
-const getLoggedInUser = (req, res) => {};
+const getLoggedInUser = async (req, res) => {
+  try {
+    const userLoggedIn = jwt.verify(
+      req.cookie.userToken,
+      process.env.SECRET_KEY
+    );
+    const user = await User.findOne({ _id: userLoggedIn._id });
+    res.status(200).json(user);
+  } catch (err) {
+    console.log("Get logged in user error:", err);
+    res.status(500).json({ err });
+  }
+};
 module.exports = {
   register,
   login,
