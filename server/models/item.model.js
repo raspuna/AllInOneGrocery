@@ -25,6 +25,11 @@ const ItemSchema = new mongoose.Schema (
             required : [true, "Please describe this product"],
             minlength : [5, "Please give a description longer than 3 characters long."]
         },
+    groceryId : {
+        type : Number,
+        required : [true, "Please enter the grocery store ID"],
+        
+    }
         
 
     },
