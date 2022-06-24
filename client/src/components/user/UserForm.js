@@ -1,7 +1,58 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Form, FormGroup, Button } from "react-bootstrap";
-
+const STATES = [
+  "AL",
+  "AK",
+  "AZ",
+  "AR",
+  "CA",
+  "CO",
+  "CT",
+  "DE",
+  "FL",
+  "GA",
+  "HI",
+  "ID",
+  "IL",
+  "IN",
+  "IA",
+  "KS",
+  "KY",
+  "LA",
+  "ME",
+  "MD",
+  "MA",
+  "MI",
+  "MN",
+  "MS",
+  "MO",
+  "MT",
+  "NE",
+  "NV",
+  "NH",
+  "NJ",
+  "NM",
+  "NY",
+  "NC",
+  "ND",
+  "OH",
+  "OK",
+  "OR",
+  "PA",
+  "RI",
+  "SC",
+  "SD",
+  "TN",
+  "TX",
+  "UT",
+  "VT",
+  "VA",
+  "WA",
+  "WV",
+  "WI",
+  "WY",
+];
 function UserForm(props) {
   const [errors, setErrors] = useState({});
   const [user, setUser] = useState({
@@ -15,7 +66,6 @@ function UserForm(props) {
     e.preventDefault();
     props.submitHandler(user, setErrors);
   };
-
   const changeHandler = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
     console.log(user);
@@ -102,6 +152,73 @@ function UserForm(props) {
           {errors.confirmPassword && (
             <Form.Text className="text-danger">
               {errors.confirmPassword.message}
+            </Form.Text>
+          )}
+        </FormGroup>
+        <FormGroup>
+          <Form.Label>Address:</Form.Label>
+          <Form.Control
+            type="text"
+            value={user.address}
+            name="address"
+            onChange={changeHandler}
+          />
+          {errors.address && (
+            <Form.Text className="text-danger">
+              {errors.address.message}
+            </Form.Text>
+          )}
+        </FormGroup>
+        <FormGroup>
+          <Form.Label>Address Detail:</Form.Label>
+          <Form.Control
+            type="text"
+            value={user.addressDetail}
+            name="addressDetail"
+            onChange={changeHandler}
+          />
+          {errors.addressDetail && (
+            <Form.Text className="text-danger">
+              {errors.addressDetail.message}
+            </Form.Text>
+          )}
+        </FormGroup>
+        <FormGroup>
+          <Form.Label>City:</Form.Label>
+          <Form.Control
+            type="text"
+            value={user.city}
+            name="city"
+            onChange={changeHandler}
+          />
+          {errors.city && (
+            <Form.Text className="text-danger">{errors.city.message}</Form.Text>
+          )}
+        </FormGroup>
+        <FormGroup>
+          <Form.Label>State:</Form.Label>
+          <Form.Select name="state" onSelect={changeHandler}>
+            {STATES.map((state) => {
+              return <option value={state}>{state}</option>;
+            })}
+          </Form.Select>
+          {errors.state && (
+            <Form.Text className="text-danger">
+              {errors.state.message}
+            </Form.Text>
+          )}
+        </FormGroup>
+        <FormGroup>
+          <Form.Label>Zipcode:</Form.Label>
+          <Form.Control
+            type="text"
+            value={user.zipcode}
+            name="zipcode"
+            onChange={changeHandler}
+          />
+          {errors.zipcode && (
+            <Form.Text className="text-danger">
+              {errors.zipcode.message}
             </Form.Text>
           )}
         </FormGroup>
