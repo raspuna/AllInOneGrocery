@@ -209,16 +209,16 @@ function UserForm(props) {
           )}
         </FormGroup>
         <FormGroup>
-          <Form.Label>Zipcode:</Form.Label>
+          <Form.Label>Zip code:</Form.Label>
           <Form.Control
             type="text"
-            value={user.zipcode}
-            name="zipcode"
+            value={user.zipCode}
+            name="zipCode"
             onChange={changeHandler}
           />
-          {errors.zipcode && (
+          {errors.zipCode && (
             <Form.Text className="text-danger">
-              {errors.zipcode.message}
+              {errors.zipCode.message}
             </Form.Text>
           )}
         </FormGroup>
