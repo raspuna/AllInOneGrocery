@@ -25,18 +25,17 @@ function GoogleMapPlace() {
       //setTest(marker.position);
     });
   };
-  const createMarker2 = (latlng, map, google) => {
-    console.log(latlng);
+  const createMarker2 = (latLng, map, google) => {
+    console.log(latLng);
     const marker = new google.maps.Marker({
       map,
-      position: latlng,
+      position: latLng,
     });
     marker.setClickable(true);
     marker.addListener("click", () => {
-      console.log("hellew!");
       //map.setCenter(marker.getPosition());
 
-      console.log(latlng.name);
+      console.log(latLng.name);
       console.log(marker.position.lat());
       console.log(marker.position.lng());
 
@@ -48,12 +47,10 @@ function GoogleMapPlace() {
   const containerStyle = { height: "400px" };
   const drawMap = () => {
     loader.load().then((google) => {
-      // The location of Uluru
-      const uluru = { lat: 33.872, lng: -118.252 };
-      // The map, centered at Uluru
+      const center = { lat: 33.872, lng: -118.252 };
       const map = new google.maps.Map(ref.current, {
         zoom: 15,
-        center: uluru,
+        center: center,
       });
       //location of the user
       const request = {
@@ -77,11 +74,6 @@ function GoogleMapPlace() {
           map.setCenter(results[0].geometry.location);
         }
       });
-      // The marker, positioned at Uluru
-      //const marker = new google.maps.Marker({
-      //  position: uluru,
-      //  map: map,
-      //});
     });
   };
   useEffect(() => {

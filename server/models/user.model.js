@@ -35,9 +35,9 @@ const UserSchema = new mongoose.Schema(
     state: {
       type: String,
     },
-    zipcode: {
+    zipCode: {
       type: String,
-      required: [true, "Zipcode is required"],
+      required: [true, "Zip code is required"],
       length: [5, "zip code must be 5 letters"],
     },
   },
