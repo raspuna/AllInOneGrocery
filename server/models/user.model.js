@@ -4,7 +4,7 @@ const UserSchema = new mongoose.Schema(
   {
     firstName: {
       type: String,
-      required: [true, "First name is requried"],
+      required: [true, "First name is required"],
     },
     lastName: {
       type: String,
@@ -55,7 +55,7 @@ UserSchema.pre("validate", function (next) {
   }
   next();
 });
-// password encrytion
+// password encryption
 UserSchema.pre("save", function (next) {
   bcrypt.hash(this.password, 10).then((hash) => {
     this.password = hash;

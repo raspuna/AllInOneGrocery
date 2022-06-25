@@ -70,7 +70,7 @@ const login = async (req, res) => {
 };
 const logout = (req, res) => {
   console.log("user logout");
-  res.clearCookie("usertoken");
+  res.clearCookie("userToken");
   res.status(200).json({ msg: "logout" });
 };
 const getLoggedInUser = async (req, res) => {
