@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 require("./routes/user.routes")(app);
-// add more routes
+require('./routes/item.routes')(app);
 //require("./routes/ .routes")(app);
 
 app.listen(PORT, () => {
