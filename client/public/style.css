@@ -5,6 +5,7 @@
   width: 100% !important;
   outline: none;
   border: none;
+  align-items: center;
 }
 
 .container,
@@ -15,6 +16,8 @@
 .container-xxl,
 .navbar {
   max-width: 2560px !important;
+  justify-content: center;
+  align-items: center;
 }
 
 html,
@@ -25,12 +28,18 @@ body {
 .navbar {
   border: none !important;
   outline: none !important;
+  justify-content: center;
+  align-items: center;
 }
 .search-input {
   padding: 0.2rem 10rem;
   border: none;
   outline: none;
   border-radius: 2rem !important;
+  align-items: center;
+}
+.navbar-nav {
+  align-items: center;
 }
 
 .form-control:focus {

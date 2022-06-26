@@ -1,7 +1,10 @@
 import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faLocationDot,
+  faShoppingCart,
+} from "@fortawesome/free-solid-svg-icons";
 
 import {
   Container,
@@ -51,7 +54,10 @@ function Header(props) {
             </Nav.Item>
 
             <Nav.Link>{user ? <Logout /> : <LoginButton />}</Nav.Link>
-            <Nav.Link>{/*cart*/}</Nav.Link>
+            <Nav.Link>
+              {/*cart*/}{" "}
+              <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

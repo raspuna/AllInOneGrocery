@@ -72,7 +72,6 @@ function UserForm(props) {
   };
   return (
     <div>
-      <h1 className="d-flex justify-content-center mt-5"></h1>
       <Form onSubmit={submitHandler}>
         <h1>Sign up</h1>
         <FormGroup>
