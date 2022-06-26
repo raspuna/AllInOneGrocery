@@ -161,5 +161,5 @@ sketch
 node_modules
 
 # ENV
-.env
+# .env
 # etc
