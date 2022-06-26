@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 require("./routes/user.routes")(app);
 require("./routes/item.routes")(app);
-require("./routes/grocery.routes")(app);
+require("./routes/order.routes")(app);
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
