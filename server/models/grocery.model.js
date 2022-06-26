@@ -32,5 +32,5 @@ const GrocerySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.models.Grocery ||
-  mongoose.model("Grocery", ProductSchema);
+const Grocery = mongoose.model("Grocery", GrocerySchema);
+module.exports = Grocery;
