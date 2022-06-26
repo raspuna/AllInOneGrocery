@@ -46,14 +46,16 @@ function Header(props) {
             />
             {/* <Button variant="info">Search</Button> */}
           </Form>
-          <Nav className="mr-auto">
+          <Nav style={{ margin: "0 2rem" }}>
             {/* zip code autofill */}
             <Nav.Item>
               &nbsp; &nbsp; <FontAwesomeIcon icon={faLocationDot} /> &nbsp;
               Avon, 02368
             </Nav.Item>
 
-            <Nav.Link>{user ? <Logout /> : <LoginButton />}</Nav.Link>
+            <Nav.Link style={{ margin: "0 2rem" }}>
+              {user ? <Logout /> : <LoginButton />}
+            </Nav.Link>
             <Nav.Link>
               {/*cart*/}{" "}
               <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
