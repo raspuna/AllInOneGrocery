@@ -1,8 +1,10 @@
 import axios from "axios";
 import React from "react";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function Logout() {
+  const navigate = useNavigate();
   const logoutHandler = (e) => {
     e.preventDefault();
     axios
@@ -12,6 +14,7 @@ function Logout() {
       .then((res) => {
         console.log(res);
         console.log("success");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);

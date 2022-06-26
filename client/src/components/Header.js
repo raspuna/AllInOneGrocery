@@ -12,9 +12,11 @@ import {
   // Button,
   Image,
 } from "react-bootstrap";
+import LoginButton from "./user/LoginButton";
 import Logout from "./user/Logout";
 
-function Header() {
+function Header(props) {
+  const { user } = props;
   return (
     <Navbar bg="light" className="that-container">
       <Container className="that-container">
@@ -48,9 +50,7 @@ function Header() {
               Avon, 02368
             </Nav.Item>
 
-            <Nav.Link>
-              <Logout />
-            </Nav.Link>
+            <Nav.Link>{user ? <Logout /> : <LoginButton />}</Nav.Link>
             <Nav.Link>{/*cart*/}</Nav.Link>
           </Nav>
         </Navbar.Collapse>
