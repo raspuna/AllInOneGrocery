@@ -5,7 +5,7 @@ import { Form, FormGroup, Button } from "react-bootstrap";
 function AdminForm(props) {
   const [errors, setErrors] = useState({});
   const [user, setUser] = useState({
-    fistName: "",
+    firstName: "",
     lastName: "",
     email: "",
     password: "",
