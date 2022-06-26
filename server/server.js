@@ -13,8 +13,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 require("./routes/user.routes")(app);
-require('./routes/item.routes')(app);
-//require("./routes/ .routes")(app);
+require("./routes/item.routes")(app);
+require("./routes/grocery.routes")(app);
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
