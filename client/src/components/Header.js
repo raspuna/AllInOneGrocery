@@ -8,6 +8,7 @@ import {
   Button,
   Image,
 } from "react-bootstrap";
+import Logout from "./user/Logout";
 
 function Header() {
   return (
@@ -30,7 +31,10 @@ function Header() {
           <Nav className="mr-auto">
             {/* zip code autofill */}
             <Nav.Item>12345</Nav.Item>
-            <Nav.Link>{/*Login*/}</Nav.Link>
+
+            <Nav.Link>
+              <Logout />
+            </Nav.Link>
             <Nav.Link>{/*cart*/}</Nav.Link>
           </Nav>
         </Navbar.Collapse>
