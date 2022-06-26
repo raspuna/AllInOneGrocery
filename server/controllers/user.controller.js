@@ -13,6 +13,7 @@ const register = async (req, res) => {
         _id: newUser._id,
         email: newUser.email,
         firstName: newUser.firstName,
+        roll: newUser.roll,
       },
       process.env.SECRET_KEY
     );
@@ -55,6 +56,7 @@ const login = async (req, res) => {
         _id: userDoc._id,
         email: userDoc.email,
         firstName: userDoc.firstName,
+        roll: userDoc.roll,
       },
       process.env.SECRET_KEY
     );
