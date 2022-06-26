@@ -1,4 +1,4 @@
-const Grocery = require("../models/grocery.model");
+const Grocery = require("../models/Order.model");
 
 const createNewGrocery = (req, res) => {
   Grocery.create(req.body, {
