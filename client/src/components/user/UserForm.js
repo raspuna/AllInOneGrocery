@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Form, FormGroup, Button } from "react-bootstrap";
+import Header from "../Header";
 const STATES = [
   "AL",
   "AK",
@@ -72,6 +73,7 @@ function UserForm(props) {
   };
   return (
     <div>
+      <Header />
       <Form onSubmit={submitHandler}>
         <h1>Sign up</h1>
         <FormGroup>

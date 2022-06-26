@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Form, FormGroup, Button, Container, Row, Col } from "react-bootstrap";
+import Header from "../Header";
 
 function LogIn() {
   const navigate = useNavigate();
@@ -40,8 +41,9 @@ function LogIn() {
   };
   return (
     <Container>
+      <Header />
       <Row className="ppy-3">
-        <Col md={10}className="mt-3">
+        <Col md={10} className="mt-3">
           <Form onSubmit={submitHandler}>
             <FormGroup className="mb-1" controlId="formBasicEmail">
               <Form.Label>Email (ID)</Form.Label>
