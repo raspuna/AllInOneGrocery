@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Form, FormGroup, Button } from "react-bootstrap";
+import { useNavigate, Link } from "react-router-dom";
+import { Form, FormGroup, Button, Container, Row, Col } from "react-bootstrap";
+import Header from "../Header";
 
 function LogIn() {
   const navigate = useNavigate();
@@ -39,35 +40,47 @@ function LogIn() {
     setError("");
   };
   return (
-    <div>
-      <Form onSubmit={submitHandler}>
-        <FormGroup>
-          <Form.Label>Email(ID):</Form.Label>
-          <Form.Control
-            type="text"
-            value={loginInfo.email}
-            name="email"
-            onChange={changeHandler}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Form.Label>Password:</Form.Label>
-          <Form.Control
-            type="password"
-            value={loginInfo.password}
-            name="password"
-            autoComplete="on"
-            onChange={changeHandler}
-          />
-        </FormGroup>
-        {error && <Form.Text className="text-danger">{error}</Form.Text>}
-        <div className="d-flex justify-content-center">
-          <Button variant="info" className="mt-2" type="submit">
-            LogIn
-          </Button>
-        </div>
-      </Form>
-    </div>
+    <Container>
+      <Header />
+      <Row className="ppy-3">
+        <Col md={10} className="mt-3">
+          <Form onSubmit={submitHandler}>
+            <FormGroup className="mb-1" controlId="formBasicEmail">
+              <Form.Label>Email (ID)</Form.Label>
+              <Form.Control
+                required
+                type="email"
+                value={loginInfo.email}
+                name="email"
+                onChange={changeHandler}
+              />
+            </FormGroup>
+            <FormGroup className="mb-4" controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                required
+                type="password"
+                value={loginInfo.password}
+                name="password"
+                autoComplete="on"
+                onChange={changeHandler}
+              />
+            </FormGroup>
+            {error && <Form.Text className="text-danger">{error}</Form.Text>}
+            <div className="d-flex ppy-2 btn-log">
+              <Button className="btn-dark" type="submit">
+                Login
+              </Button>
+              <div className="ppy-2">
+                <p className="text-center">
+                  Don't have an account? <Link to="/signup"> Signup</Link>
+                </p>
+              </div>
+            </div>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

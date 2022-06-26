@@ -66,3 +66,24 @@ input[type="color"]:focus,
     0 0 8px rgba(126, 239, 104, 0.6);
   outline: 0 none;
 }
+.btn-log {
+  justify-content: center;
+  align-items: center !important;
+}
+
+.btn-log > button {
+  padding: 0.2rem 2rem;
+}
+
+.ppy-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.ppy-3 {
+  margin-top: 10rem !important;
+}
+.row {
+  justify-content: center;
+}
