@@ -19,7 +19,7 @@ function Index() {
   }, []);
   return (
     <div>
-      <Header />
+      <Header user={user} />
       {user && <GoogleMapAPI user={user} />}
       <div>Store List HERE</div>
     </div>

@@ -8,9 +8,11 @@ import {
   Button,
   Image,
 } from "react-bootstrap";
+import LoginButton from "./user/LoginButton";
 import Logout from "./user/Logout";
 
-function Header() {
+function Header(props) {
+  const { user } = props;
   return (
     <Navbar bg="primary" expand="md" className="mb-2">
       <Container fluid>
@@ -32,9 +34,7 @@ function Header() {
             {/* zip code autofill */}
             <Nav.Item>12345</Nav.Item>
 
-            <Nav.Link>
-              <Logout />
-            </Nav.Link>
+            <Nav.Link>{user ? <Logout /> : <LoginButton />}</Nav.Link>
             <Nav.Link>{/*cart*/}</Nav.Link>
           </Nav>
         </Navbar.Collapse>
