@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Form, FormGroup, Button } from "react-bootstrap";
+import { Form, FormGroup, Button, Container } from "react-bootstrap";
 import Header from "../Header";
 const STATES = [
   "AL",
@@ -72,7 +72,7 @@ function UserForm(props) {
     console.log(user);
   };
   return (
-    <div>
+    <Container>
       <Header />
       <Form onSubmit={submitHandler}>
         <h1>Sign up</h1>
@@ -235,7 +235,7 @@ function UserForm(props) {
           </Link>
         </div>
       </Form>
-    </div>
+    </Container>
   );
 }
 
