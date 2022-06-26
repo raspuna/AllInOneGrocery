@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 require("./routes/user.routes")(app);
+require("./routes/store.routes")(app);
 require("./routes/item.routes")(app);
 require("./routes/order.routes")(app);
 

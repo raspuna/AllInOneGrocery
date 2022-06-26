@@ -6,6 +6,7 @@ import Login from "./components/user/Login";
 import GoogleMapAPI from "./components/util/GoogleMapPlace";
 import Index from "./components/Index";
 import NewAdmin from "./components/user/NewAdmin";
+import AddStore from "./components/store/AddStore";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/signup" element={<Register />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/mapAPI" element={<GoogleMapAPI />}></Route>
+          <Route path="/newStore" element={<AddStore />}></Route>
         </Routes>
       </BrowserRouter>
     </Container>
