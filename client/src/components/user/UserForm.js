@@ -56,7 +56,7 @@ const STATES = [
 function UserForm(props) {
   const [errors, setErrors] = useState({});
   const [user, setUser] = useState({
-    fistName: "",
+    firstName: "",
     lastName: "",
     email: "",
     password: "",

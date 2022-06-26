@@ -51,12 +51,10 @@ const updateOrder = (req, res) => {
       res.json({ data });
     })
     .catch((err) => {
-      res
-        .status(400)
-        .json({
-          message: "Something went wrong while updating an item",
-          error: err,
-        });
+      res.status(400).json({
+        message: "Something went wrong while updating an item",
+        error: err,
+      });
     });
 };
 
@@ -66,12 +64,10 @@ const deleteOrder = (req, res) => {
       res.json({ deleteRequest });
     })
     .catch((err) => {
-      res
-        .status(400)
-        .json({
-          message: "Something went wrong while deleting an item",
-          error: err,
-        });
+      res.status(400).json({
+        message: "Something went wrong while deleting an item",
+        error: err,
+      });
     });
 };
 
