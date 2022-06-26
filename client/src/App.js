@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./components/user/Register";
 import Login from "./components/user/Login";
 import GoogleMapAPI from "./components/util/GoogleMapPlace";
+import Index from "./components/Index";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           {/* user login path */}
+          <Route path="/" element={<Index />}></Route>
           <Route path="/signup" element={<Register />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/mapAPI" element={<GoogleMapAPI />}></Route>

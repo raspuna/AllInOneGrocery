@@ -28,6 +28,7 @@ function Header() {
             <Button variant="info">Search</Button>
           </Form>
           <Nav className="mr-auto">
+            {/* zip code autofill */}
             <Nav.Item>12345</Nav.Item>
             <Nav.Link>{/*Login*/}</Nav.Link>
             <Nav.Link>{/*cart*/}</Nav.Link>

@@ -82,7 +82,6 @@ function GoogleMapPlace() {
   }, []);
   return (
     <>
-      <Header />
       <div ref={ref} id="map" style={containerStyle}></div>
       {test && <div>{test}</div>}
     </>
