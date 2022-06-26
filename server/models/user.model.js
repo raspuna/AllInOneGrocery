@@ -37,8 +37,16 @@ const UserSchema = new mongoose.Schema(
     },
     zipCode: {
       type: String,
-      required: [true, "Zip code is required"],
       length: [5, "zip code must be 5 letters"],
+    },
+    roll: {
+      type: String,
+      enum: ["User", "Admin"],
+      default: "User",
+    },
+    groceryID: {
+      type: Number,
+      //It is only for the Admin
     },
   },
   { timestamps: true }
