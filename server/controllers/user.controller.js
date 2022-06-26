@@ -13,6 +13,7 @@ const register = async (req, res) => {
         _id: newUser._id,
         email: newUser.email,
         firstName: newUser.firstName,
+        roll: newUser.roll,
       },
       process.env.SECRET_KEY
     );
@@ -55,14 +56,23 @@ const login = async (req, res) => {
         _id: userDoc._id,
         email: userDoc.email,
         firstName: userDoc.firstName,
+        roll: userDoc.roll,
       },
       process.env.SECRET_KEY
     );
-    res
-      .cookie("userToken", userToken, {
-        httpOnly: true,
-      })
-      .json({ message: "login success" });
+    if (userDoc.roll === "Admin") {
+      res
+        .cookie("userToken", userToken, {
+          httpOnly: true,
+        })
+        .json({ message: "admin login", roll: "Admin" });
+    } else {
+      res
+        .cookie("userToken", userToken, {
+          httpOnly: true,
+        })
+        .json({ message: "login success" });
+    }
   } catch (err) {
     console.log("login err:", err);
     res.status(400).json({ message: "Invalid login" });
