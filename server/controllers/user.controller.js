@@ -86,7 +86,7 @@ const logout = (req, res) => {
 const getLoggedInUser = async (req, res) => {
   try {
     const userLoggedIn = jwt.verify(
-      req.cookie.userToken,
+      req.cookies.userToken,
       process.env.SECRET_KEY
     );
     const user = await User.findOne({ _id: userLoggedIn._id });

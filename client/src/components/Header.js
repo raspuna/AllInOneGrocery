@@ -12,6 +12,7 @@ import {
   // Button,
   Image,
 } from "react-bootstrap";
+import Logout from "./user/Logout";
 
 function Header() {
   return (

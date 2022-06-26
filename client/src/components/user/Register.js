@@ -12,7 +12,7 @@ function NewUser() {
       })
       .then((res) => {
         console.log("success");
-        navigate("/home");
+        navigate("/");
       })
       .catch((err) => {
         if (err.response) {
