@@ -8,7 +8,8 @@ const loader = new Loader({
   libraries: ["places"],
 });
 
-function GoogleMapPlace() {
+function GoogleMapPlace(props) {
+  const { user } = props;
   const createMarker = (place, map, google) => {
     if (!place.geometry || !place.geometry.location) return;
     console.log(place);
@@ -54,9 +55,10 @@ function GoogleMapPlace() {
       });
       //location of the user
       const request = {
-        query: "12333 W Olympic Blvd",
+        query: user.address + ", " + user.zipCode,
         fields: ["geometry"],
       };
+      console.log(request);
       //stores near the user,
       const stores = [
         { lat: 34.0263599, lng: -118.455773, name: "trader Joe's" },
