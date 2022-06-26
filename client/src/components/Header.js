@@ -43,11 +43,11 @@ function Header() {
           </Form>
           <Nav className="mr-auto">
             {/* zip code autofill */}
-            <Nav.Item>
-              &nbsp; &nbsp; <FontAwesomeIcon icon={faLocationDot} /> &nbsp;
-              Avon, 02368
-            </Nav.Item>
-            <Nav.Link>{/*Login*/}</Nav.Link>
+            <Nav.Item>12345</Nav.Item>
+
+            <Nav.Link>
+              <Logout />
+            </Nav.Link>
             <Nav.Link>{/*cart*/}</Nav.Link>
           </Nav>
         </Navbar.Collapse>
