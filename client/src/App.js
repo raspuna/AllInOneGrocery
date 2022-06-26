@@ -5,6 +5,7 @@ import Register from "./components/user/Register";
 import Login from "./components/user/Login";
 import GoogleMapAPI from "./components/util/GoogleMapPlace";
 import Index from "./components/Index";
+import NewAdmin from "./components/user/NewAdmin";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Routes>
           {/* user login path */}
           <Route path="/" element={<Index />}></Route>
+          <Route path="/newAdmin" element={<NewAdmin />}></Route>
           <Route path="/signup" element={<Register />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/mapAPI" element={<GoogleMapAPI />}></Route>

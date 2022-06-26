@@ -58,11 +58,19 @@ const login = async (req, res) => {
       },
       process.env.SECRET_KEY
     );
-    res
-      .cookie("userToken", userToken, {
-        httpOnly: true,
-      })
-      .json({ message: "login success" });
+    if (userDoc.roll === "Admin") {
+      res
+        .cookie("userToken", userToken, {
+          httpOnly: true,
+        })
+        .json({ message: "admin login", roll: "Admin" });
+    } else {
+      res
+        .cookie("userToken", userToken, {
+          httpOnly: true,
+        })
+        .json({ message: "login success" });
+    }
   } catch (err) {
     console.log("login err:", err);
     res.status(400).json({ message: "Invalid login" });

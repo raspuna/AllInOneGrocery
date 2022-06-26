@@ -21,7 +21,11 @@ function LogIn() {
       .then((res) => {
         console.log(res);
         console.log("login success");
-        navigate("/home");
+        if (res.data.roll && res.data.roll === "Admin") {
+          navigate("/Admin");
+        } else {
+          navigate("/");
+        }
       })
       .catch((err) => {
         console.log(err);

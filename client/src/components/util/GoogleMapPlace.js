@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
-import Header from "../Header";
 
 //google api loader
 const loader = new Loader({
