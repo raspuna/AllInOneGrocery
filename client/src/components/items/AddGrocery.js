@@ -18,7 +18,8 @@ function CreateProduct(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setGroceryId(user.groceryId);
+    // autofill groceryId from user(admin)
+    setGroceryId(user.storeId);
     axios
       .post("http://localhost:8000/api/item", {
         itemName,
@@ -42,7 +43,6 @@ function CreateProduct(props) {
     <Container>
       <Header user={user} setUser={setUser} />
       <Form onSubmit={submitHandler}>
-        <h2>{user && <div>test {user.groceryId}</div>}</h2>
         <h3>Add Groceries</h3>
         <FormGroup>
           <Form.Label>Grocery Title : </Form.Label>
