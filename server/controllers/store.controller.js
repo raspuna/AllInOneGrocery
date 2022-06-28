@@ -8,6 +8,26 @@ const createStore = async (req, res) => {
     res.status(500).json({ err });
   }
 };
+
 module.exports = {
-  createStore,
+  getAllStores: (req, res) => {
+    Store.find({})
+        .then((allStores) => res.json(allStores))
+        .catch((err) => console.log(err));
+},
+      
+  createStore: (req, res) =>{
+    Store.create(req,body)
+      .then((newStore) => res.json(newStore))
+      .catch((err) => console.log(err));
+  },
+      
+  getOneStore: (req, res) => {
+    Store.findOne({ _id: req.params.id })
+    .then((oneStore) => res.json(oneStore))
+    .catch((err) => console.log(err));
+    },
+
 };
+
+
