@@ -20,6 +20,7 @@ function GroceryList() {
                     {/* <img src = {grocery.itemImage} alt = "" /> */}
                     <br />
                     <Link to = {`item/${grocery._id}`}>Details</Link>
+                    {/* Here we need to add buttons that can add a particular item to the users "shopping cart" */}
                 </div>
             ))}
         </div>
