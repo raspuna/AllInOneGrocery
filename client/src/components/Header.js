@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,9 +17,23 @@ import {
 } from "react-bootstrap";
 import LoginButton from "./user/LoginButton";
 import Logout from "./user/Logout";
+import axios from "axios";
 
 function Header(props) {
-  const { user } = props;
+  const { user, setUser } = props;
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_ADDRESS}/api/user/getLoggedInUser`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res);
+        setUser(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <Navbar bg="light" className="that-container">
       <Container className="that-container">
@@ -50,7 +64,11 @@ function Header(props) {
             {/* zip code autofill */}
             <Nav.Item>
               &nbsp; &nbsp; <FontAwesomeIcon icon={faLocationDot} /> &nbsp;
-              Avon, 02368
+              {user && (
+                <div>
+                  {user.city}, {user.zipCode}
+                </div>
+              )}
             </Nav.Item>
 
             <Nav.Link style={{ margin: "0 2rem" }}>

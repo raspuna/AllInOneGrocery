@@ -7,6 +7,11 @@ import GoogleMapAPI from "./components/util/GoogleMapPlace";
 import Index from "./components/Index";
 import NewAdmin from "./components/user/NewAdmin";
 import AddStore from "./components/store/AddStore";
+import GroceryList from "./components/items/groceryList";
+import AddGrocery from "./components/items/AddGrocery";
+import AdminMain from "./components/store/AdminMain";
+import OneStore from "./components/store/OneStore";
+
 
 const App = () => {
   return (
@@ -20,6 +25,10 @@ const App = () => {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/mapAPI" element={<GoogleMapAPI />}></Route>
           <Route path="/newStore" element={<AddStore />}></Route>
+          <Route path="/adminMain" element={<AdminMain />}></Route>
+          <Route path="/newItem" element={<AddGrocery />}></Route>
+          <Route path= "/stores/:id" element={<OneStore />} />
+          <Route path="/allGroceries" element={<GroceryList />}></Route>
         </Routes>
       </BrowserRouter>
     </Container>

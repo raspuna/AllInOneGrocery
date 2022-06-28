@@ -106,11 +106,11 @@ function AdminForm(props) {
           )}
         </FormGroup>
         <FormGroup>
-          <Form.Label>Grocery ID:</Form.Label>
+          <Form.Label>Store ID:</Form.Label>
           <Form.Control
             type="text"
-            value={user.GroceryID}
-            name="groceryID"
+            value={user.storeId}
+            name="storeId"
             onChange={changeHandler}
           ></Form.Control>
         </FormGroup>
