@@ -44,7 +44,7 @@ const UserSchema = new mongoose.Schema(
       enum: ["User", "Admin"],
       default: "User",
     },
-    groceryId: {
+    storeId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Store",
       //It is only for the Admin
