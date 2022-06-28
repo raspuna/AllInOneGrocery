@@ -18,7 +18,7 @@ function UserForm(props) {
   };
   const changeHandler = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
+    console.log(user.firstName);
   };
   return (
     <Container>

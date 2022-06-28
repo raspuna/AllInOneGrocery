@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
+import DisplayStores from "./store/DisplayStores";
 import GoogleMapAPI from "./util/GoogleMapPlace";
 function Index() {
   const [user, setUser] = useState(null);
@@ -9,7 +10,7 @@ function Index() {
     <div>
       <Header user={user} setUser={setUser} />
       {user && <GoogleMapAPI user={user} />}
-      <div>Store List HERE</div>
+      {/* <DisplayStores /> */}
     </div>
   );
 }
