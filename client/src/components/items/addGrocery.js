@@ -46,7 +46,7 @@ function CreateProduct(props) {
             type="text"
             value={itemName}
             name="itemName"
-            onchange={(e) => setItemName(e.target.value)}
+            onChange={(e) => setItemName(e.target.value)}
           />
           {errors.itemName && (
             <Form.Text className="text-danger">
@@ -59,12 +59,12 @@ function CreateProduct(props) {
           <Form.Label>Grocery Class :</Form.Label>
           <Form.Select onChange={(e) => setItemClass(e.target.value)}>
             <option>Please Select The Item Class :</option>
-            <option value="Vegetable"></option>
-            <option value="Fruit"></option>
-            <option value="Meat"></option>
-            <option value="Canned Good"></option>
-            <option value="Dry Food"></option>
-            <option value="Misc."></option>
+            <option value="Vegetable">Vegetable</option>
+            <option value="Fruit">Fruit</option>
+            <option value="Meat">Meat</option>
+            <option value="Canned Good">Canned Good</option>
+            <option value="Dry Food">Dry Food</option>
+            <option value="Miscellaneous">Misc.</option>
           </Form.Select>
         </FormGroup>
         <FormGroup>
@@ -73,7 +73,7 @@ function CreateProduct(props) {
             type="number"
             value={itemQuantity}
             name="itemQuantity"
-            onchange={(e) => setItemQuantity(e.target.value)}
+            onChange={(e) => setItemQuantity(e.target.value)}
           />
           {errors.itemQuantity && (
             <Form.Text className="text-danger">
