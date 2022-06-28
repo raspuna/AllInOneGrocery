@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Form, FormGroup, Button, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import Header from "../Header";
 
 function CreateProduct(props) {
   const { productList, setProductList } = props;
@@ -38,6 +39,7 @@ function CreateProduct(props) {
 
   return (
     <Container>
+      <Header />
       <Form onSubmit={submitHandler}>
         <h3>Add Groceries</h3>
         <FormGroup>
