@@ -8,7 +8,7 @@ import Index from "./components/Index";
 import NewAdmin from "./components/user/NewAdmin";
 import AddStore from "./components/store/AddStore";
 import GroceryList from "./components/items/groceryList";
-
+import CreateProduct from "./components/items/addGrocery";
 const App = () => {
   return (
     <Container>
@@ -22,6 +22,7 @@ const App = () => {
           <Route path="/mapAPI" element={<GoogleMapAPI />}></Route>
           <Route path="/newStore" element={<AddStore />}></Route>
           <Route path = "/allGroceries" element = {<GroceryList />}></Route>
+          <Route path = "/createProduct" element = {<CreateProduct />}></Route>
         </Routes>
       </BrowserRouter>
     </Container>
