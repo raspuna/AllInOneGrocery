@@ -149,7 +149,11 @@ function UserForm(props) {
           <Form.Label>State:</Form.Label>
           <Form.Select name="state" onSelect={changeHandler}>
             {STATES.map((state) => {
-              return <option value={state}>{state}</option>;
+              return (
+                <option key={state} value={state}>
+                  {state}
+                </option>
+              );
             })}
           </Form.Select>
           {errors.state && (
