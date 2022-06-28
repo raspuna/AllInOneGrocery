@@ -50,7 +50,11 @@ function Header(props) {
             {/* zip code autofill */}
             <Nav.Item>
               &nbsp; &nbsp; <FontAwesomeIcon icon={faLocationDot} /> &nbsp;
-              Avon, 02368
+              {user && (
+                <div>
+                  {user.city}, {user.zipCode}
+                </div>
+              )}
             </Nav.Item>
 
             <Nav.Link style={{ margin: "0 2rem" }}>
