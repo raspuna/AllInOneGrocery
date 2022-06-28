@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Form, FormGroup, Button, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,7 +6,7 @@ import Header from "../Header";
 
 function CreateProduct(props) {
   const { productList, setProductList } = props;
-
+  const [user, setUser] = useState({});
   const [itemName, setItemName] = useState("");
   const [itemClass, setItemClass] = useState("");
   const [itemQuantity, setItemQuantity] = useState("");
@@ -18,6 +18,7 @@ function CreateProduct(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    setGroceryId(user.groceryId);
     axios
       .post("http://localhost:8000/api/item", {
         itemName,
@@ -39,8 +40,9 @@ function CreateProduct(props) {
 
   return (
     <Container>
-      <Header />
+      <Header user={user} setUser={setUser} />
       <Form onSubmit={submitHandler}>
+        <h2>{user && <div>test {user.groceryId}</div>}</h2>
         <h3>Add Groceries</h3>
         <FormGroup>
           <Form.Label>Grocery Title : </Form.Label>
@@ -114,10 +116,6 @@ function CreateProduct(props) {
           )}
         </FormGroup>
 
-        {/* <label>Grocery Store ID</label>
-        <input type = "number" value = {groceryId} name = "groceryId"
-        onChange = {(e) => setGroceryId(e.target.value)} />
-        {errors.groceryId && <p className = "text-danger"> {errors.groceryId.message}</p>} */}
         <Button type="submit">{props.buttonText}</Button>
       </Form>
     </Container>

@@ -38,7 +38,7 @@ const ItemSchema = new mongoose.Schema(
       required: [true, "Please include a price"],
     },
     groceryId: {
-      type: Number,
+      type: mongoose.Schema.Types.ObjectId,
       required: [true, "Please enter the grocery store ID"],
     },
   },
