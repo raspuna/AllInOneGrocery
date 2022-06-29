@@ -21,8 +21,10 @@ const App = () => {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/mapAPI" element={<GoogleMapAPI />}></Route>
           <Route path="/newStore" element={<AddStore />}></Route>
-          <Route path = "/allGroceries" element = {<GroceryList />}></Route>
-          <Route path = "/createProduct" element = {<CreateProduct />}></Route>
+          <Route path="/adminMain" element={<AdminMain />}></Route>
+          <Route path="/newItem" element={<AddGrocery />}></Route>
+          <Route path= "/stores/:id" element={<OneStore />} />
+          <Route path="/allGroceries" element={<GroceryList />}></Route>
         </Routes>
       </BrowserRouter>
     </Container>
