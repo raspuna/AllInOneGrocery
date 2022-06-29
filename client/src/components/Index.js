@@ -10,7 +10,7 @@ function Index() {
   return (
     <div>
       <Header user={user} setUser={setUser} />
-      {user && <GoogleMapAPI user={user} />}
+      {user && <GoogleMapAPI user={user} storeList={storeList} />}
       <DisplayStores storeList={storeList} setStoreList={setStoreList} />
     </div>
   );
