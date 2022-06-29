@@ -5,12 +5,13 @@ import DisplayStores from "./store/DisplayStores";
 import GoogleMapAPI from "./util/GoogleMapPlace";
 function Index() {
   const [user, setUser] = useState(null);
+  const [storeList, setStoreList] = useState([]);
 
   return (
     <div>
       <Header user={user} setUser={setUser} />
       {user && <GoogleMapAPI user={user} />}
-      {/* <DisplayStores /> */}
+      <DisplayStores storeList={storeList} setStoreList={setStoreList} />
     </div>
   );
 }
