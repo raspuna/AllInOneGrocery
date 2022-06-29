@@ -23,7 +23,7 @@ function LogIn() {
         console.log(res);
         console.log("login success");
         if (res.data.roll && res.data.roll === "Admin") {
-          navigate("/Admin");
+          navigate("/newItem"); // admin only
         } else {
           navigate("/");
         }

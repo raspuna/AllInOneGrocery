@@ -112,7 +112,7 @@ function StoreForm(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Form.Label>Longitute:</Form.Label>
+            <Form.Label>Longitude:</Form.Label>
             <Form.Control
               type="text"
               value={store.lng}

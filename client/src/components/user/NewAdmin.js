@@ -12,7 +12,7 @@ function NewAdmin() {
       })
       .then((res) => {
         console.log("success");
-        navigate("/home");
+        navigate("/newItem");
       })
       .catch((err) => {
         if (err.response) {
