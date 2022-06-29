@@ -43,6 +43,8 @@ function Item() {
             <p>Grocery Id : {item.groceryId}</p>
             {/* <DeleteButton id = {item._id} handleDelete = {() => navigate('/')} /> */}
             <button className = "deleteButton" onclick = {deleteHandler}>Delete Item</button>
+            <Link to = {`item/${grocery._id}`}>Details</Link>
+
         </div>
     );
 }
