@@ -1,13 +1,35 @@
 import React, { useState } from "react";
 import { Container, Form, FormGroup, Button } from "react-bootstrap";
 import { STATES } from "../util/State";
+import { Loader } from "@googlemaps/js-api-loader";
 import Header from "../Header";
-
+//google api loader
+const loader = new Loader({
+  apiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
+  version: "weekly",
+  libraries: ["places"],
+});
 function StoreForm(props) {
   const [errors, setErrors] = useState({});
   const [store, setStore] = useState({});
   const submitHandler = (e) => {
     e.preventDefault();
+    loader.load().then(async (google) => {
+      const request = {
+        query: store.address + ", " + store.zipCode,
+        fields: ["geometry"],
+      };
+      var service = new google.maps.Geocoder();
+      const { results } = await service.geocode({ address: request.query });
+
+      console.log(results[0].geometry.location.lat());
+      setStore({
+        ...store,
+        lat: results[0].geometry.location.lat(),
+        lng: results[0].geometry.location.lng(),
+      });
+      console.log(store);
+    });
     props.submitHandler(store, setErrors);
   };
   const changeHandler = (e) => {
@@ -102,24 +124,7 @@ function StoreForm(props) {
               </Form.Text>
             )}
           </FormGroup>
-          <FormGroup>
-            <Form.Label>Latitude:</Form.Label>
-            <Form.Control
-              type="text"
-              value={store.lat}
-              name="lat"
-              onChange={changeHandler}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Form.Label>Longitude:</Form.Label>
-            <Form.Control
-              type="text"
-              value={store.lng}
-              name="lng"
-              onChange={changeHandler}
-            />
-          </FormGroup>
+
           <div className="d-flex mt-2 justify-content-center">
             <Button variant="success" type="submit">
               Submit
