@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
+import { useNavigate } from "react-router-dom";
 
 //google api loader
 const loader = new Loader({
@@ -9,6 +10,7 @@ const loader = new Loader({
 });
 
 function GoogleMapPlace(props) {
+  const navigate = useNavigate();
   const { user, storeList } = props;
   const createMarker = (place, map, google) => {
     if (!place.geometry || !place.geometry.location) return;
@@ -26,24 +28,21 @@ function GoogleMapPlace(props) {
       //setTest(marker.position);
     });
   };
-  const createMarker2 = (latLng, map, google) => {
-    console.log(latLng);
+  const createMarker2 = (store, map, google) => {
+    console.log(store);
     const marker = new google.maps.Marker({
       map,
-      position: latLng,
+      position: store,
     });
     marker.setClickable(true);
     marker.addListener("click", () => {
-      //map.setCenter(marker.getPosition());
-
-      console.log(latLng.name);
+      console.log(store.storeName);
       console.log(marker.position.lat());
       console.log(marker.position.lng());
-
-      //setTest(marker.position);
+      console.log(store._id);
+      navigate(`/stores/${store._id}`);
     });
   };
-  const [test, setTest] = useState("");
   const ref = useRef();
   const containerStyle = { height: "400px" };
   const drawMap = () => {
@@ -59,11 +58,7 @@ function GoogleMapPlace(props) {
         fields: ["geometry"],
       };
       console.log(request);
-      //stores near the user,
-      const stores = [
-        { lat: 34.0263599, lng: -118.455773, name: "trader Joe's" },
-        { lat: 34.0224926, lng: -118.4390551, name: "whole foods...?" },
-      ];
+
       var service = new google.maps.places.PlacesService(map);
       service.findPlaceFromQuery(request, function (results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK && results) {
@@ -84,7 +79,6 @@ function GoogleMapPlace(props) {
   return (
     <>
       <div ref={ref} id="map" style={containerStyle}></div>
-      {test && <div>{test}</div>}
     </>
   );
 }
