@@ -49,7 +49,7 @@ function GoogleMapPlace(props) {
     loader.load().then((google) => {
       const center = { lat: 33.872, lng: -118.252 };
       const map = new google.maps.Map(ref.current, {
-        zoom: 15,
+        zoom: 12,
         center: center,
       });
       //location of the user
