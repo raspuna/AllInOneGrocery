@@ -11,7 +11,7 @@ function OneStore() {
   console.log(storeId)
   const [groceries, setGroceries] = useState([]);
   useEffect(()=> {
-    axios.get(`http://localhost:8000/api/store/${storeId}`)
+    axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/api/store/${storeId}`)
     .then((res) => {
       console.log('ItemList', res.data);
       setStore(res.data);
@@ -20,7 +20,7 @@ function OneStore() {
       console.log(err);
   });
     axios.get(
-    `http://localhost:8000/api/items/${storeId}`)
+    `${process.env.REACT_APP_SERVER_ADDRESS}/api/items/${storeId}`)
     .then((res) => {
         console.log('ItemList', res.data);
         setGroceries(res.data);
