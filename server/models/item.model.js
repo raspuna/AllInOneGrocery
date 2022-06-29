@@ -37,6 +37,11 @@ const ItemSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please include a price"],
     },
+    itemImage: {
+      type: String,
+      required: [true, "Please include a image"],
+      data: Buffer,
+    },
     groceryId: {
       type: mongoose.Schema.Types.ObjectId,
       required: [true, "Please enter the grocery store ID"],

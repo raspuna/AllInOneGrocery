@@ -13,16 +13,26 @@ function CreateProduct(props) {
   const [itemDescription, setItemDescription] = useState("");
   const [itemPrice, setItemPrice] = useState("");
   const [groceryId, setGroceryId] = useState();
+  const [itemImage, setItemImage] = useState(null);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-
+  const validate = (e) => {
+    const file = e.target.files[0];
+    if (file.size >= 8048576) {
+      return alert("Max file size is 8MB");
+    } else {
+      setItemImage(URL.createObjectURL(file));
+    }
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
+
     // autofill groceryId from user(admin)
     axios
       .post(`${process.env.REACT_APP_SERVER_ADDRESS}/api/item`, {
         itemName,
+        itemImage,
         itemClass,
         itemQuantity,
         itemDescription,
@@ -41,7 +51,7 @@ function CreateProduct(props) {
 
   return (
     <Container>
-      <Header user={user} setUser={setUser}/>
+      <Header user={user} setUser={setUser} />
       <Form onSubmit={submitHandler}>
         <h3>Add Groceries</h3>
         <FormGroup>
@@ -58,6 +68,15 @@ function CreateProduct(props) {
             </Form.Text>
           )}
           <br />
+        </FormGroup>
+        <FormGroup>
+          <img src={itemImage} alt="item" />
+          <Form.Label htmlFor="image-upload"></Form.Label>
+          <Form.Control
+            type="file"
+            accept="image/png, image/jpeg,"
+            onChange={validate}
+          ></Form.Control>
         </FormGroup>
         <FormGroup>
           <Form.Label>Grocery Class :</Form.Label>
