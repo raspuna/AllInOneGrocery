@@ -24,8 +24,9 @@ function Item() {
     }, []);
 
     const deleteHandler = () => {
+        console.log(id)
         axios
-        .delete(`http://localhost:8000/api/items/${id}`)
+        .delete(`http://localhost:8000/api/item/${id}`)
         .then((res) => {
             console.log(res);
             navigate('/')
@@ -46,7 +47,7 @@ function Item() {
             <p>Item price : {item.itemPrice}</p>
             <p>Grocery Id : {item.groceryId}</p>
             {/* <DeleteButton id = {item._id} handleDelete = {() => navigate('/')} /> */}
-            <button className = "deleteButton" onclick = {deleteHandler}>Delete Item</button>
+            <button className = "deleteButton" onClick = {deleteHandler}>Delete Item</button>
             </>
             }
         </div>
