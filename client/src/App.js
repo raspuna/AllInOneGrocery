@@ -8,7 +8,9 @@ import Index from "./components/Index";
 import NewAdmin from "./components/user/NewAdmin";
 import AddStore from "./components/store/AddStore";
 import GroceryList from "./components/items/groceryList";
-import CreateProduct from "./components/items/addGrocery";
+import AddGrocery from "./components/items/AddGrocery";
+import AdminMain from "./components/store/AdminMain";
+import OneStore from "./components/store/OneStore";
 
 const App = () => {
   return (
