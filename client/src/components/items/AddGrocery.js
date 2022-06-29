@@ -21,7 +21,7 @@ function CreateProduct(props) {
     e.preventDefault();
     // autofill groceryId from user(admin)
     axios
-      .post("http://localhost:8000/api/item", {
+      .post(`${process.env.REACT_APP_SERVER_ADDRESS}/api/item`, {
         itemName,
         itemClass,
         itemQuantity,

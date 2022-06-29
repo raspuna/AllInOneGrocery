@@ -10,7 +10,7 @@ function DisplayStores(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/stores")
+      .get(`${process.env.REACT_APP_SERVER_ADDRESS}/api/stores`)
       .then((res) => {
         console.log(res.data);
         setStoreList(res.data);

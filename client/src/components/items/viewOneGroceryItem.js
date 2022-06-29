@@ -13,7 +13,7 @@ function Item() {
     console.log('ID', id);
     useEffect(() => {
         axios
-            .get(`http://localhost:8000/api/item/${id}`)
+            .get(`${process.env.REACT_APP_SERVER_ADDRESS}/api/item/${id}`)
             .then((res) => {
                 console.log('Item', res.data);
                 setItem(res.data);
@@ -26,7 +26,7 @@ function Item() {
     const deleteHandler = () => {
         console.log(id)
         axios
-        .delete(`http://localhost:8000/api/item/${id}`)
+        .delete(`${process.env.REACT_APP_SERVER_ADDRESS}/api/item/${id}`)
         .then((res) => {
             console.log(res);
             navigate('/')

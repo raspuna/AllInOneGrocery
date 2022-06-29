@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function GroceryList() {
     const [groceries, setGroceries] = useState([]);
     useEffect(() => {
-        axios.get('https://localhost:8000/api/items')
+        axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/api/items`)
         .then((res) => {
             setGroceries(res.data);
         })

@@ -19,7 +19,7 @@ const EditItem = (props) => {
     
     useEffect(() => {
     axios
-        .get(`http://localhost:8000/api/items/${id}`)
+        .get(`${process.env.REACT_APP_SERVER_ADDRESS}/api/items/${id}`)
         .then((response) => {
         console.log(response.data);
         setItemName(response.data.itemName);
@@ -37,7 +37,7 @@ const EditItem = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
     axios
-    .put(`http://localhost:8000/api/item/${id}`, {
+    .put(`${process.env.REACT_APP_SERVER_ADDRESS}/api/item/${id}`, {
         itemName,
         itemDescription,
         itemQuantity,
