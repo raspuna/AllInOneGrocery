@@ -9,7 +9,7 @@ const loader = new Loader({
 });
 
 function GoogleMapPlace(props) {
-  const { user } = props;
+  const { user, storeList } = props;
   const createMarker = (place, map, google) => {
     if (!place.geometry || !place.geometry.location) return;
     console.log(place);
@@ -68,10 +68,10 @@ function GoogleMapPlace(props) {
       service.findPlaceFromQuery(request, function (results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK && results) {
           createMarker(results[0], map, google);
-          for (var i = 0; i < stores.length; i++) {
+          for (var i = 0; i < storeList.length; i++) {
             //TODO: distance function...
             //if (distance(results[0], stores[i]) > 5 ) continue;
-            createMarker2(stores[i], map, google);
+            createMarker2(storeList[i], map, google);
           }
           map.setCenter(results[0].geometry.location);
         }
