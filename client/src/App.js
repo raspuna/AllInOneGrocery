@@ -12,6 +12,7 @@ import AddGrocery from "./components/items/AddGrocery";
 import AdminMain from "./components/store/AdminMain";
 import OneStore from "./components/store/OneStore";
 import EditItem from "./components/items/EditItem";
+import ViewItem from "./components/items/viewOneGroceryItem"
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           <Route path= "/stores/:storeId" element={<OneStore />} />
           <Route path="/allGroceries" element={<GroceryList />}></Route>
           <Route path = "/edit/:id" element = {<EditItem />}></Route>
+          <Route path="/item/:id" element={<ViewItem />} />
         </Routes>
       </BrowserRouter>
     </Container>

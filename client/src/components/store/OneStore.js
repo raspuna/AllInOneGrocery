@@ -36,10 +36,12 @@ function OneStore() {
       <h2>{store.storeName}</h2>
       {groceries.map((grocery) => (
         <div key={grocery._id}>
-          <h2>{grocery.itemName}</h2>
+          <h4>{grocery.itemName}</h4>
+          {grocery.itemQuantity <1 && <div>sold out</div>}
+          <div>{grocery.itemPrice}</div>
           {/* <img src = {grocery.itemImage} alt = "" /> */}
           <br />
-          <Link to={`item/${grocery._id}`}>Details</Link>
+          <Link to={`/item/${grocery._id}`}>Details</Link>
           {/* Here we need to add buttons that can add a particular item to the users "shopping cart" */}
         </div>
       ))}
