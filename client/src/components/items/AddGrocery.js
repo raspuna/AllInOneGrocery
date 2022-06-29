@@ -6,7 +6,7 @@ import Header from "../Header";
 
 function CreateProduct(props) {
   const { productList, setProductList } = props;
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   const [itemName, setItemName] = useState("");
   const [itemClass, setItemClass] = useState("");
   const [itemQuantity, setItemQuantity] = useState("");
@@ -16,10 +16,10 @@ function CreateProduct(props) {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
+
   const submitHandler = (e) => {
     e.preventDefault();
     // autofill groceryId from user(admin)
-    setGroceryId(user.storeId);
     axios
       .post("http://localhost:8000/api/item", {
         itemName,
@@ -27,7 +27,7 @@ function CreateProduct(props) {
         itemQuantity,
         itemDescription,
         itemPrice,
-        groceryId,
+        groceryId: user.storeId,
       })
       .then((res) => {
         console.log(`result of create item L ${res}`);
@@ -41,7 +41,7 @@ function CreateProduct(props) {
 
   return (
     <Container>
-      <Header user={user} setUser={setUser} />
+      <Header user={user} setUser={setUser}/>
       <Form onSubmit={submitHandler}>
         <h3>Add Groceries</h3>
         <FormGroup>
@@ -115,9 +115,10 @@ function CreateProduct(props) {
             </Form.Text>
           )}
         </FormGroup>
-
-        <Button type="submit">{props.buttonText}</Button>
+        {<div>{user && user.storeId}</div>}
+        {user && <Button type="submit">{props.buttonText}</Button>}
       </Form>
+      {user && <Link to={`/stores/${user.storeId}`}>Go Back </Link>}
     </Container>
   );
 }

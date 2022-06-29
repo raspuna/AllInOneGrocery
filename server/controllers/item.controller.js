@@ -2,6 +2,7 @@
 const Item = require("../models/item.model");
 module.exports = {
   createItem: (req, res) => {
+    console.log("create", req.body)
     Item.create(req.body)
       .then((newItem) => {
         res.status(201).json(newItem);
