@@ -34,6 +34,7 @@ function OneStore() {
     <div>
       <Header user={user} setUser={setUser} />
       <h2>{store.storeName}</h2>
+      {user && storeId ===user.storeId && user.roll === "Admin" && <Link to="/newItem">Add Grocery</Link>}
       {groceries.map((grocery) => (
         <div key={grocery._id}>
           <h4>{grocery.itemName}</h4>
