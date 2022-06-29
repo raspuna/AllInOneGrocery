@@ -13,8 +13,9 @@ function GoogleMapPlace(props) {
   const navigate = useNavigate();
   const { user, storeList } = props;
   const createMarker = (place, map, google) => {
-    if (!place.geometry || !place.geometry.location) return;
+
     console.log(place);
+    if (!place.geometry || !place.geometry.location) return;
     const marker = new google.maps.Marker({
       map,
       position: place.geometry.location,
@@ -75,7 +76,7 @@ function GoogleMapPlace(props) {
   };
   useEffect(() => {
     drawMap();
-  }, []);
+  }, [storeList]);
   return (
     <>
       <div ref={ref} id="map" style={containerStyle}></div>
