@@ -2,7 +2,7 @@
 const Item = require("../models/item.model");
 module.exports = {
   createItem: (req, res) => {
-    console.log("create", req.body)
+    console.log("create", req.body);
     Item.create(req.body)
       .then((newItem) => {
         res.status(201).json(newItem);
@@ -33,6 +33,34 @@ module.exports = {
         res.status(400).json({ message: "something went wrong in find all" });
       });
   },
+  getItemsBySearch: (req, res) => {
+    console.log("textSearch:", req.params.searchText);
+    Item.find({
+      $text: {
+        $search: req.params.searchText,
+        $caseSensitive: false,
+        $diacriticSensitive: false,
+      },
+    })
+      .limit(500)
+      .then((items) => {
+        res.json(items);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json({ message: "something went wrong in find all" });
+      });
+  },
+  getItemsByCategory: (req, res) => {
+    Item.find({ itemClass: req.params.className })
+      .then((items) => {
+        res.json(items);
+      })
+      .catch((err) => {
+        res.status(400).json({ message: "something went wrong in find all" });
+      });
+  },
+
   getAllItems: (req, res) => {
     Item.find({})
       .then((items) => {

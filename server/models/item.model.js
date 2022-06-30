@@ -7,6 +7,7 @@ const ItemSchema = new mongoose.Schema(
       type: String,
       required: [true, "Grocery name is required"],
       minlength: [3, "Product name must have at least 3 characters"],
+      text: true,
     },
     itemClass: {
       type: String,
