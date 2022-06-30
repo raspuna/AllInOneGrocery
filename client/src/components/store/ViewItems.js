@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Card, Container } from "react-bootstrap";
+import { useCookies } from "react-cookie";
+import { Button, Card, Container } from "react-bootstrap";
 import Header from "../Header";
 import Category from "./Category";
 import axios from "axios";
 
 function ViewItems(props) {
   const { storeId, groceries, setGroceries } = props;
+  const [groceryCart, setGroceryCart] = useState({});
   const [user, setUser] = useState(null);
   const [store, setStore] = useState(null);
+  const [cookies, setCookie, removeCookie] = useCookies(["cart"]);
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_SERVER_ADDRESS}/api/store/${storeId}`)
@@ -36,7 +39,13 @@ function ViewItems(props) {
   };
   return (
     <Container>
-      <Header user={user} setUser={setUser} submitHandler={submitHandler} />
+      <Header
+        user={user}
+        setUser={setUser}
+        submitHandler={submitHandler}
+        groceryCart={groceryCart}
+        setGroceryCart={setGroceryCart}
+      />
       <h2>{store && store.storeName}</h2>
       {user && storeId === user.storeId && user.roll === "Admin" && (
         <Link to="/newItem">Add Grocery</Link>
@@ -53,13 +62,25 @@ function ViewItems(props) {
                 </Card.Header>
                 <Card.Body md={6}>
                   <Card.Text>
-                    {grocery.itemQuantity < 1 && <div>sold out</div>}
-                    <div>$ {grocery.itemPrice}</div>
+                    {grocery.itemQuantity < 1 && <div>sold out</div>}${" "}
+                    {grocery.itemPrice}
                     <img src={grocery.itemImage} alt="" />
                     <br />
                   </Card.Text>
                   <Link to={`/item/${grocery._id}`}>Details</Link>
                   <Link to={`/item/${grocery._id}/edit`}> edit</Link>
+                  <Button
+                    onClick={(e) => {
+                      console.log(grocery._id);
+                      console.log(groceryCart);
+                      const newCart = { ...groceryCart, [grocery._id]: 1 };
+                      console.log({ newCart });
+                      setGroceryCart(newCart);
+                      setCookie("cart", newCart, { path: "/" });
+                    }}
+                  >
+                    Add to Cart
+                  </Button>
                   {/* Here we need to add buttons that can add a particular item to the users "shopping cart" */}
                 </Card.Body>
               </Card>

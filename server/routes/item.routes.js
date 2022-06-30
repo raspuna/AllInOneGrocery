@@ -12,6 +12,7 @@ module.exports = (app) => {
     "/api/store/:storeId/items/search/:searchText",
     ItemController.getItemsBySearch
   );
+  app.post("/api/items/itemList", ItemController.getSelectedItems);
   app.get("/api/item/:id", ItemController.getOneItem);
   app.put("/api/items/:id", ItemController.updateItem);
   app.delete("/api/item/:id", ItemController.deleteItem);

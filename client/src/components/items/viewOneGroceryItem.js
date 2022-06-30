@@ -58,11 +58,11 @@ function Item() {
               <Row>
                 <Col md={7}>
                   <h2>{item.itemName}</h2>
-                  <p>Item Class : {item.itemClass}</p>
-                  <p>Item Quantity : {item.itemQuantity}</p>
-                  <p>Item description : {item.itemDescription}</p>
-                  <p>Item price : {item.itemPrice}</p>
-                  <p>Grocery Id : {item.groceryId}</p>
+                  <div>Item Class : {item.itemClass}</div>
+                  <div>Item Quantity : {item.itemQuantity}</div>
+                  <div>Item description : {item.itemDescription}</div>
+                  <div>Item price : {item.itemPrice}</div>
+                  <div>Grocery Id : {item.groceryId}</div>
                 </Col>
 
                 <Col m={5}>
