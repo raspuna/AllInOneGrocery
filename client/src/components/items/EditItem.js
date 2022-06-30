@@ -21,15 +21,6 @@ const EditItem = (props) => {
   console.log(id);
   const navigate = useNavigate();
 
-  const validate = (e) => {
-    const file = e.target.files[0];
-    if (file.size >= 8048576) {
-      return alert("Max file size is 8MB");
-    } else {
-      setItemImage(file);
-   
-    }
-  };
 
   const uploadImage = async () => {
     const data = new FormData();
@@ -125,12 +116,11 @@ const EditItem = (props) => {
         </FormGroup>
         <FormGroup>
           <Form.Label htmlFor="image-upload"></Form.Label>
-          <img src={itemImage} alt="item" />
           <Form.Control
             type="file"
             id="image-upload"
             accept="image/png, image/jpeg,"
-            onChange={validate}
+            onChange={uploadImage}
           ></Form.Control>
         </FormGroup>
         <FormGroup>
