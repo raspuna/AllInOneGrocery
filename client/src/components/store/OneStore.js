@@ -31,10 +31,25 @@ function OneStore() {
       });
   }, []);
 
+  //for the text search
+  const submitHandler = (searchText) => {
+    console.log("search:", searchText);
+    axios
+      .get(
+        `${process.env.REACT_APP_SERVER_ADDRESS}/api/items/search/${searchText}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        setGroceries(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const { id } = useParams();
   return (
     <Container>
-      <Header user={user} setUser={setUser} />
+      <Header user={user} setUser={setUser} submitHandler={submitHandler} />
       <h2>{store.storeName}</h2>
       {user && storeId === user.storeId && user.roll === "Admin" && (
         <Link to="/newItem">Add Grocery</Link>
@@ -46,7 +61,7 @@ function OneStore() {
               <Card.Header>
                 <h4>{grocery.itemName}</h4>
               </Card.Header>
-              <Card.Body>
+              <Card.Body md={6}>
                 <Card.Text>
                   {grocery.itemQuantity < 1 && <div>sold out</div>}
                   <div>$ {grocery.itemPrice}</div>
