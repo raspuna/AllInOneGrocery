@@ -50,7 +50,7 @@ function OneStore() {
             <Card.Text>
           {grocery.itemQuantity <1 && <div>sold out</div>}
           <div>$ {grocery.itemPrice}</div>
-          {/* <img src = {grocery.itemImage} alt = "" /> */}
+          <img src = {grocery.itemImage} alt = "" />
           <br />
 
             </Card.Text>
