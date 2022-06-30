@@ -13,7 +13,6 @@ function GoogleMapPlace(props) {
   const navigate = useNavigate();
   const { user, storeList } = props;
   const createMarker = (place, map, google) => {
-
     console.log(place);
     if (!place.geometry || !place.geometry.location) return;
     const marker = new google.maps.Marker({
@@ -59,7 +58,9 @@ function GoogleMapPlace(props) {
         fields: ["geometry"],
       };
       console.log(request);
-
+      if (request.query === null) {
+        return;
+      }
       var service = new google.maps.places.PlacesService(map);
       service.findPlaceFromQuery(request, function (results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK && results) {

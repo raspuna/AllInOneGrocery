@@ -1,15 +1,17 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StoreForm from "./StoreForm";
 
 function AddStore() {
+  const [store, setStore] = useState({});
   const navigate = useNavigate();
   const addStore = (store, setErrors) => {
     axios
       .post(`${process.env.REACT_APP_SERVER_ADDRESS}/api/store`, store)
       .then((res) => {
         console.log(res);
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -20,7 +22,7 @@ function AddStore() {
   };
   return (
     <div>
-      <StoreForm submitHandler={addStore} />
+      <StoreForm store={store} setStore={setStore} submitHandler={addStore} />
     </div>
   );
 }
