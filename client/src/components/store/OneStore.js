@@ -9,6 +9,7 @@ function OneStore() {
   const [user, setUser] = useState(null);
   const [store, setStore] = useState({});
   const { storeId } = useParams();
+  console.log(storeId);
   const [groceries, setGroceries] = useState([]);
   useEffect(() => {
     axios
@@ -63,7 +64,7 @@ function OneStore() {
                 <Card.Header>
                   <h4>{grocery.itemName}</h4>
                 </Card.Header>
-                <Card.Body>
+                <Card.Body md={6}>
                   <Card.Text>
                     {grocery.itemQuantity < 1 && <div>sold out</div>}
                     <div>$ {grocery.itemPrice}</div>
@@ -71,6 +72,7 @@ function OneStore() {
                     <br />
                   </Card.Text>
                   <Link to={`/item/${grocery._id}`}>Details</Link>
+                  <Link to={`/item/${grocery._id}/edit`}> edit</Link>
                   {/* Here we need to add buttons that can add a particular item to the users "shopping cart" */}
                 </Card.Body>
               </Card>

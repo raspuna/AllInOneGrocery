@@ -38,7 +38,7 @@ function Item() {
   const updateHandler = () => {
     console.log(id);
     axios
-      .put(`${process.env.REACT_APP_SERVER_ADDRESS}/api/item/${id}`)
+      .put(`${process.env.REACT_APP_SERVER_ADDRESS}/api/item/${id}/edit`)
       .then((res) => {
         console.log(res);
         navigate("/");

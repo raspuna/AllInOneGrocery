@@ -1,24 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Form, FormGroup, Button, Container } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
 import Header from "../Header";
 
-function CreateProduct(props) {
-  const { productList, setProductList } = props;
-  const [user, setUser] = useState(null);
+const UpdateItem = (props) => {
+  const [user, setUser] = useState("");
   const [itemName, setItemName] = useState("");
   const [itemClass, setItemClass] = useState("");
-  const [itemQuantity, setItemQuantity] = useState("");
+  const [itemQuantity, setItemQuantity] = useState([]);
   const [itemDescription, setItemDescription] = useState("");
-  const [itemPrice, setItemPrice] = useState("");
-  const [groceryId, setGroceryId] = useState();
+  const [itemPrice, setItemPrice] = useState([]);
   const [itemImage, setItemImage] = useState(null);
   const [errors, setErrors] = useState({});
+  const { id } = useParams();
   const navigate = useNavigate();
 
-
-  
   const validate = (e) => {
     const file = e.target.files[0];
     if (file.size >= 8048576) {
@@ -28,26 +25,26 @@ function CreateProduct(props) {
     }
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-
-    // autofill groceryId from user(admin)
+  useEffect(() => {
     axios
-      .post(`${process.env.REACT_APP_SERVER_ADDRESS}/api/item`, {
-        itemName,
-        itemImage,
-        itemClass,
-        itemQuantity,
-        itemDescription,
-        itemPrice,
-        groceryId: user.storeId,
-      })
+      .get(`${process.env.REACT_APP_SERVER_ADDRESS}/api/item/${id}`)
       .then((res) => {
-        console.log(`result of create item L ${res}`);
+        console.log(res.data.queriedOne);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const updateHandler = (e) => {
+    e.preventDefault();
+    axios
+      .put(`${process.env.REACT_APP_SERVER_ADDRESS}/api/item/${id}`)
+      .then((res) => {
         navigate("/");
       })
       .catch((err) => {
-        console.log(err.response.data.error);
+        console.log(err);
         setErrors(err.response.data.error.errors);
       });
   };
@@ -55,7 +52,7 @@ function CreateProduct(props) {
   return (
     <Container>
       <Header user={user} setUser={setUser} />
-      <Form onSubmit={submitHandler}>
+      <Form onSubmit={updateHandler}>
         <h3>Add Groceries</h3>
         <FormGroup>
           <Form.Label>Grocery Title : </Form.Label>
@@ -143,5 +140,6 @@ function CreateProduct(props) {
       {user && <Link to={`/stores/${user.storeId}`}>Go Back </Link>}
     </Container>
   );
-}
-export default CreateProduct;
+};
+
+export default UpdateItem;
