@@ -73,7 +73,12 @@ function ViewItems(props) {
                     onClick={(e) => {
                       console.log(grocery._id);
                       console.log(groceryCart);
-                      const newCart = { ...groceryCart, [grocery._id]: 1 };
+                      const newCart = !(grocery._id in cookies.cart)
+                        ? { ...cookies.cart, [grocery._id]: 1 }
+                        : {
+                            ...cookies.cart,
+                            [grocery._id]: cookies.cart[grocery._id] + 1,
+                          };
                       console.log({ newCart });
                       setGroceryCart(newCart);
                       setCookie("cart", newCart, { path: "/" });
