@@ -16,6 +16,9 @@ function CreateProduct(props) {
   const [itemImage, setItemImage] = useState(null);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+
+
+  
   const validate = (e) => {
     const file = e.target.files[0];
     if (file.size >= 8048576) {
