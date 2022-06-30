@@ -13,6 +13,7 @@ import AdminMain from "./components/store/AdminMain";
 import OneStore from "./components/store/OneStore";
 import EditItem from "./components/items/EditItem";
 import ViewItem from "./components/items/viewOneGroceryItem";
+import CategorySearch from "./components/store/CategorySearch";
 
 const App = () => {
   return (
@@ -32,7 +33,10 @@ const App = () => {
           <Route path="/allGroceries" element={<GroceryList />}></Route>
           <Route path="/edit/:id" element={<EditItem />}></Route>
           <Route path="/item/:id" element={<ViewItem />} />
-          <Route path="/items/:category"></Route>
+          <Route
+            path="/stores/:storeId/collections/:category"
+            element={<CategorySearch />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     </Container>

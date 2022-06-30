@@ -36,14 +36,20 @@ module.exports = {
   getItemsBySearch: (req, res) => {
     console.log("textSearch:", req.params.searchText);
     Item.find({
-      $text: {
-        $search: req.params.searchText,
-        $caseSensitive: false,
-        $diacriticSensitive: false,
-      },
+      $and: [
+        { groceryId: req.params.storeId },
+        {
+          $text: {
+            $search: req.params.searchText,
+            $caseSensitive: false,
+            $diacriticSensitive: false,
+          },
+        },
+      ],
     })
       .limit(500)
       .then((items) => {
+        console.log(items);
         res.json(items);
       })
       .catch((err) => {
