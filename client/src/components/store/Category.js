@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Category() {
+function Category(props) {
+  const { storeId } = props;
   const categories = [
     "Vegetable",
     "Fruit",
@@ -12,7 +14,11 @@ function Category() {
   return (
     <div>
       {categories.map((category) => (
-        <div>{category}</div>
+        <div>
+          <Link to={`/stores/${storeId}/collections/${category}`}>
+            {category}
+          </Link>
+        </div>
       ))}
     </div>
   );

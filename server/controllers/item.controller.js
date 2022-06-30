@@ -58,7 +58,12 @@ module.exports = {
       });
   },
   getItemsByCategory: (req, res) => {
-    Item.find({ itemClass: req.params.className })
+    Item.find({
+      $and: [
+        { groceryId: req.params.storeId },
+        { itemClass: req.params.className },
+      ],
+    })
       .then((items) => {
         res.json(items);
       })
