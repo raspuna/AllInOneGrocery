@@ -4,10 +4,14 @@ import { Button } from "react-bootstrap";
 import { useCookies } from "react-cookie";
 
 function OrderDetail(props) {
+  //id:quantity dictionary
+  const { groceryCart, setGroceryCart } = props;
+  // item list from server
   const [cart, setCart] = useState([]);
   const [itemPriceTotal, setItemPriceTotal] = useState(0);
   const [cookies, setCookie, removeCookie] = useCookies(["cart"]);
   const reducer = (acc, item) => {
+    console.log(item._id, cookies.cart);
     return acc + item.itemPrice * cookies.cart[item._id];
   };
   const calcSum = () => {
@@ -19,7 +23,8 @@ function OrderDetail(props) {
     }
     const newSum = cart.reduce(reducer, sum);
     console.log(newSum);
-    setItemPriceTotal(newSum);
+
+    return newSum;
   };
   useEffect(() => {
     console.log(cookies.cart);
@@ -32,7 +37,8 @@ function OrderDetail(props) {
       .then((res) => {
         console.log(res.data);
         setCart(res.data);
-        calcSum();
+        const newSum = calcSum();
+        setItemPriceTotal(newSum);
       })
       .catch((err) => console.log(err));
     //calcSum();
@@ -41,6 +47,9 @@ function OrderDetail(props) {
     const arr = cart.filter((item) => item._id != id);
     setCart(arr);
     const newSum = calcSum();
+    delete cookies.cart[id];
+    console.log(cookies.cart);
+    setCookie("cart", cookies.cart, { path: "/" });
     setItemPriceTotal(newSum);
   };
   return (
