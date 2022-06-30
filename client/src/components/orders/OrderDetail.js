@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import { useCookies } from "react-cookie";
 
 function OrderDetail(props) {
@@ -49,6 +50,7 @@ function OrderDetail(props) {
           return (
             <div key={item._id}>
               {item.itemName} ${item.itemPrice} {cookies.cart[item._id]}
+              <Button onClick={() => handleRemove(item._id)}>Remove</Button>
             </div>
           );
         })}
