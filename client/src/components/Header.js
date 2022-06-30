@@ -35,7 +35,7 @@ function Header(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, []); 
   const submitHandler = (e) => {
     e.preventDefault();
     props.submitHandler(searchText);
