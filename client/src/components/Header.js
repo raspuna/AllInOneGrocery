@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -20,6 +20,23 @@ import Logout from "./user/Logout";
 import axios from "axios";
 
 function Header(props) {
+  const [searchText, setSearchText] = useState("");
+  const [searchedItems, setSearchedItems] = useState([]);
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log("search:", searchText);
+    axios
+      .get(
+        `${process.env.REACT_APP_SERVER_ADDRESS}/api/items/search/${searchText}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        setSearchedItems(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const { user, setUser } = props;
   useEffect(() => {
     axios
@@ -51,12 +68,17 @@ function Header(props) {
           id="basic-navbar-nav"
           style={{ justifyContent: "flex-end" }}
         >
-          <Form className="d-flex">
+          <Form onSubmit={submitHandler} className="d-flex">
             <FormControl
               type="search"
               placeholder="Search"
               aria-label="Search"
               className="search-input"
+              value={searchText}
+              onChange={(e) => {
+                var lowerCase = e.target.value.toLowerCase();
+                setSearchText(lowerCase);
+              }}
             />
             {/* <Button variant="info">Search</Button> */}
           </Form>
