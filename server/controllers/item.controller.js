@@ -57,6 +57,17 @@ module.exports = {
         res.status(400).json({ message: "something went wrong in find all" });
       });
   },
+  getSelectedItems: (req, res) => {
+    console.log("cart: ", req.body.itemList);
+    Item.find({ _id: { $in: req.body.itemList } })
+      .then((items) => {
+        console.log(items);
+        res.json(items);
+      })
+      .catch((err) => {
+        res.status(400).json({ message: "something went wrong in find list" });
+      });
+  },
   getItemsByCategory: (req, res) => {
     Item.find({
       $and: [

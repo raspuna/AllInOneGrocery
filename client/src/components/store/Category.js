@@ -14,7 +14,7 @@ function Category(props) {
   return (
     <div>
       {categories.map((category) => (
-        <div>
+        <div key={category}>
           <Link to={`/stores/${storeId}/collections/${category}`}>
             {category}
           </Link>

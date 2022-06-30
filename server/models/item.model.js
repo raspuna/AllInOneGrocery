@@ -21,7 +21,6 @@ const ItemSchema = new mongoose.Schema(
       ],
       required: [true, "Please select what type of product this is"],
     },
-    // image???
     itemQuantity: {
       type: Number,
       required: [true, "Please include the quanity for this product "],
