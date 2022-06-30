@@ -2,10 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useCookies } from "react-cookie";
+import CartButton from "./CartButton";
 
 function OrderDetail(props) {
-  //id:quantity dictionary
-  const { groceryCart, setGroceryCart } = props;
   // item list from server
   const [cart, setCart] = useState([]);
   const [itemPriceTotal, setItemPriceTotal] = useState(0);
@@ -44,7 +43,7 @@ function OrderDetail(props) {
     //calcSum();
   }, []);
   const handleRemove = (id) => {
-    const arr = cart.filter((item) => item._id != id);
+    const arr = cart.filter((item) => item._id !== id);
     setCart(arr);
     const newSum = calcSum();
     delete cookies.cart[id];
@@ -59,6 +58,7 @@ function OrderDetail(props) {
           return (
             <div key={item._id}>
               {item.itemName} ${item.itemPrice} {cookies.cart[item._id]}
+              <CartButton grocery={item} />
               <Button onClick={() => handleRemove(item._id)}>Remove</Button>
             </div>
           );

@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useCookies } from "react-cookie";
-import { Button, Card, Container } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 import Header from "../Header";
 import Category from "./Category";
 import axios from "axios";
+import CartButton from "../orders/CartButton";
 
 function ViewItems(props) {
   const { storeId, groceries, setGroceries } = props;
   const [groceryCart, setGroceryCart] = useState({});
   const [user, setUser] = useState(null);
   const [store, setStore] = useState(null);
-  const [cookies, setCookie, removeCookie] = useCookies(["cart"]);
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_SERVER_ADDRESS}/api/store/${storeId}`)
@@ -37,6 +36,7 @@ function ViewItems(props) {
         console.log(err);
       });
   };
+
   return (
     <Container>
       <Header
@@ -69,24 +69,7 @@ function ViewItems(props) {
                   </Card.Text>
                   <Link to={`/item/${grocery._id}`}>Details</Link>
                   <Link to={`/item/${grocery._id}/edit`}> edit</Link>
-                  <Button
-                    onClick={(e) => {
-                      console.log(grocery._id);
-                      console.log(groceryCart);
-                      const newCart = !(grocery._id in cookies.cart)
-                        ? { ...cookies.cart, [grocery._id]: 1 }
-                        : {
-                            ...cookies.cart,
-                            [grocery._id]: cookies.cart[grocery._id] + 1,
-                          };
-                      console.log({ newCart });
-                      setGroceryCart(newCart);
-                      setCookie("cart", newCart, { path: "/" });
-                    }}
-                  >
-                    Add to Cart
-                  </Button>
-                  {/* Here we need to add buttons that can add a particular item to the users "shopping cart" */}
+                  <CartButton grocery={grocery} />
                 </Card.Body>
               </Card>
             </div>
