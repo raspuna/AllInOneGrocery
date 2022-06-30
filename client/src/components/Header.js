@@ -21,22 +21,7 @@ import axios from "axios";
 
 function Header(props) {
   const [searchText, setSearchText] = useState("");
-  const [searchedItems, setSearchedItems] = useState([]);
-  const submitHandler = (e) => {
-    e.preventDefault();
-    console.log("search:", searchText);
-    axios
-      .get(
-        `${process.env.REACT_APP_SERVER_ADDRESS}/api/items/search/${searchText}`
-      )
-      .then((res) => {
-        console.log(res.data);
-        setSearchedItems(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+
   const { user, setUser } = props;
   useEffect(() => {
     axios
@@ -51,6 +36,10 @@ function Header(props) {
         console.log(err);
       });
   }, []);
+  const submitHandler = (e) => {
+    e.preventDefault();
+    props.submitHandler(searchText);
+  };
   return (
     <Navbar bg="light" className="that-container">
       <Container className="that-container">
