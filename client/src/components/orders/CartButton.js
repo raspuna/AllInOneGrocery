@@ -17,7 +17,6 @@ function CartButton(props) {
   };
   return (
     <div>
-      {/* cart Button area */}
       {grocery._id in cookies.cart ? (
         <div>
           <Button onClick={() => handleChange(grocery._id, 1)}>+</Button>
