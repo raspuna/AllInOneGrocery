@@ -18,7 +18,7 @@ const ItemSchema = new mongoose.Schema(
         "Dry Food",
         "Miscellaneous",
       ],
-      required: [true, "Please select what type of product this is"],
+      // required: [true, "Please select what type of product this is"],
     },
     // image???
     itemQuantity: {
