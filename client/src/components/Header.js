@@ -85,9 +85,9 @@ function Header(props) {
             <Nav.Item>
               &nbsp; &nbsp; <FontAwesomeIcon icon={faLocationDot} /> &nbsp;
               {user && (
-                <div>
+                <span>
                   {user.city}, {user.zipCode}
-                </div>
+                </span>
               )}
             </Nav.Item>
 

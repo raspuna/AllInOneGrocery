@@ -47,7 +47,7 @@ function DisplayStores(props) {
           <Col>
             {" "}
             <Swiper
-              slidesPerView={4}
+              slidesPerView={7}
               spaceBetween={30}
               loop={true}
               pagination={{
