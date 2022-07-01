@@ -5,7 +5,7 @@ import {
   faLocationDot,
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
-
+import { useCookies } from "react-cookie";
 import {
   Container,
   FormControl,
@@ -23,12 +23,16 @@ import axios from "axios";
 import OrderDetail from "./orders/OrderDetail";
 
 function Header(props) {
+  const [cookies, setCookie, removeCookie] = useCookies(["cart"]);
   const [searchText, setSearchText] = useState("");
   const { user, setUser } = props;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   useEffect(() => {
+    if (!("cart" in cookies)) {
+      setCookie("cart", {}, { path: "/" });
+    }
     axios
       .get(`${process.env.REACT_APP_SERVER_ADDRESS}/api/user/getLoggedInUser`, {
         withCredentials: true,
