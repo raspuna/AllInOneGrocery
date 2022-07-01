@@ -3,17 +3,26 @@ import { useCookies } from "react-cookie";
 import { Button } from "react-bootstrap";
 
 function CartButton(props) {
-  const { grocery } = props;
+  const { grocery, isCart } = props;
   const [cookies, setCookie, removeCookie] = useCookies(["cart"]);
+
   const handleChange = (id, val) => {
     const newCart = {
       ...cookies.cart,
       [id]: cookies.cart[id] + val,
     };
     if (newCart[id] === 0) {
-      delete newCart[id];
+      if (isCart) {
+        props.handleRemove(id);
+      } else {
+        delete newCart[id];
+        setCookie("cart", newCart, { path: "/" });
+      }
+    } else {
+      setCookie("cart", newCart, { path: "/" });
     }
-    setCookie("cart", newCart, { path: "/" });
+    console.log(cookies.cart);
+    props.handleChange();
   };
   return (
     <div>
@@ -22,8 +31,14 @@ function CartButton(props) {
           <Button onClick={() => handleChange(grocery._id, 1)}>+</Button>
           <Button>{cookies.cart[grocery._id]}</Button>
           <Button onClick={() => handleChange(grocery._id, -1)}>-</Button>
+          {/*remove button is only shown in cart */}
+          {isCart && (
+            <Button onClick={() => props.handleRemove(grocery._id)}>
+              Remove
+            </Button>
+          )}
         </div>
-      ) : (
+      ) : isCart ? null : (
         <Button
           onClick={(e) => {
             console.log(grocery._id);
