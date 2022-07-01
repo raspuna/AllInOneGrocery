@@ -21,7 +21,6 @@ const EditItem = (props) => {
   console.log(id);
   const navigate = useNavigate();
 
-
   const uploadImage = async () => {
     const data = new FormData();
     data.append("file", itemImage);
@@ -43,13 +42,6 @@ const EditItem = (props) => {
       console.log(`error: ${error}`);
     }
   };
-
-
-
-
-
-
-
 
   useEffect(() => {
     axios
@@ -74,7 +66,6 @@ const EditItem = (props) => {
 
     const url = await uploadImage(itemImage);
     console.log(url);
-
 
     axios
       .put(`${process.env.REACT_APP_SERVER_ADDRESS}/api/item/${id}`, {
