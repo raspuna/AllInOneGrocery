@@ -7,12 +7,13 @@ import GoogleMapAPI from "./components/util/GoogleMapPlace";
 import Index from "./components/Index";
 import NewAdmin from "./components/user/NewAdmin";
 import AddStore from "./components/store/AddStore";
+
 import GroceryList from "./components/items/GroceryList";
 import AddGrocery from "./components/items/AddGrocery";
 import AdminMain from "./components/store/AdminMain";
 import OneStore from "./components/store/OneStore";
 import EditItem from "./components/items/EditItem";
-import ViewItem from "./components/items/viewOneGroceryItem"
+import ViewItem from "./components/items/viewOneGroceryItem";
 
 const App = () => {
   return (
@@ -28,9 +29,14 @@ const App = () => {
           <Route path="/newStore" element={<AddStore />}></Route>
           <Route path="/adminMain" element={<AdminMain />}></Route>
           <Route path="/newItem" element={<AddGrocery />}></Route>
-          <Route path= "/stores/:storeId" element={<OneStore />} />
-          <Route path="/allGroceries" element={<GroceryList />}></Route>
-          <Route path = "/edit/:id" element = {<EditItem />}></Route>
+
+          <Route path="/stores/:storeId" element={<OneStore />} />
+          <Route
+            path="/stores/:storeId/collections/:category"
+            element={<OneStore />}
+          ></Route>
+
+          <Route path="/item/:id/edit" element={<EditItem />}></Route>
           <Route path="/item/:id" element={<ViewItem />} />
         </Routes>
       </BrowserRouter>

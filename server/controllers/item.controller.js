@@ -2,7 +2,7 @@
 const Item = require("../models/item.model");
 module.exports = {
   createItem: (req, res) => {
-    console.log("create", req.body)
+    console.log("create", req.body);
     Item.create(req.body)
       .then((newItem) => {
         res.status(201).json(newItem);
@@ -33,6 +33,56 @@ module.exports = {
         res.status(400).json({ message: "something went wrong in find all" });
       });
   },
+  getItemsBySearch: (req, res) => {
+    console.log("textSearch:", req.params.searchText);
+    Item.find({
+      $and: [
+        { groceryId: req.params.storeId },
+        {
+          $text: {
+            $search: req.params.searchText,
+            $caseSensitive: false,
+            $diacriticSensitive: false,
+          },
+        },
+      ],
+    })
+      .limit(500)
+      .then((items) => {
+        console.log(items);
+        res.json(items);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json({ message: "something went wrong in find all" });
+      });
+  },
+  getSelectedItems: (req, res) => {
+    console.log("cart: ", req.body.itemList);
+    Item.find({ _id: { $in: req.body.itemList } })
+      .then((items) => {
+        console.log(items);
+        res.json(items);
+      })
+      .catch((err) => {
+        res.status(400).json({ message: "something went wrong in find list" });
+      });
+  },
+  getItemsByCategory: (req, res) => {
+    Item.find({
+      $and: [
+        { groceryId: req.params.storeId },
+        { itemClass: req.params.className },
+      ],
+    })
+      .then((items) => {
+        res.json(items);
+      })
+      .catch((err) => {
+        res.status(400).json({ message: "something went wrong in find all" });
+      });
+  },
+
   getAllItems: (req, res) => {
     Item.find({})
       .then((items) => {

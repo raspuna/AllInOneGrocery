@@ -1,52 +1,36 @@
 import axios from "axios";
-import React, {useEffect, useState} from "react";
-import {Link, useParams } from "react-router-dom";
-import Header from "../Header";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import ViewItems from "./ViewItems";
 
 function OneStore() {
-  const [user, setUser] = useState(null);
-  const [store, setStore] = useState({})
-  const { storeId } = useParams();
-  console.log(storeId)
+  const { storeId, category } = useParams();
+  //console.log(storeId, category);
   const [groceries, setGroceries] = useState([]);
-  useEffect(()=> {
-    axios.get(`http://localhost:8000/api/store/${storeId}`)
-    .then((res) => {
-      console.log('ItemList', res.data);
-      setStore(res.data);
-  })
-  .catch((err) => {
-      console.log(err);
-  });
-    axios.get(
-    `http://localhost:8000/api/items/${storeId}`)
-    .then((res) => {
-        console.log('ItemList', res.data);
+  useEffect(() => {
+    const url = category
+      ? `${process.env.REACT_APP_SERVER_ADDRESS}/api/store/${storeId}/items/category/${category}`
+      : `${process.env.REACT_APP_SERVER_ADDRESS}/api/items/${storeId}`;
+    axios
+      .get(url)
+      .then((res) => {
+        console.log("ItemList", res.data);
         setGroceries(res.data);
-    })
-    .catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
-    });
-}, []);
+      });
+  }, [category]);
 
-  const { id } = useParams();
   return (
-    <div>
-      <Header user={user} setUser={setUser} />
-      <h2>{store.storeName}</h2>
-      {user && storeId ===user.storeId && user.roll === "Admin" && <Link to="/newItem">Add Grocery</Link>}
-      {groceries.map((grocery) => (
-        <div key={grocery._id}>
-          <h4>{grocery.itemName}</h4>
-          {grocery.itemQuantity <1 && <div>sold out</div>}
-          <div>{grocery.itemPrice}</div>
-          {/* <img src = {grocery.itemImage} alt = "" /> */}
-          <br />
-          <Link to={`/item/${grocery._id}`}>Details</Link>
-          {/* Here we need to add buttons that can add a particular item to the users "shopping cart" */}
-        </div>
-      ))}
-    </div>
+    <Container>
+      <ViewItems
+        storeId={storeId}
+        groceries={groceries}
+        setGroceries={setGroceries}
+      />
+    </Container>
   );
 }
 

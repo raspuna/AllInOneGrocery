@@ -11,7 +11,7 @@ const loader = new Loader({
 });
 function StoreForm(props) {
   const [errors, setErrors] = useState({});
-  const [store, setStore] = useState({});
+  const { store, setStore } = props;
   const submitHandler = (e) => {
     e.preventDefault();
     loader.load().then(async (google) => {
@@ -22,18 +22,21 @@ function StoreForm(props) {
       var service = new google.maps.Geocoder();
       const { results } = await service.geocode({ address: request.query });
 
-      console.log(results[0].geometry.location.lat());
-      setStore({
-        ...store,
-        lat: results[0].geometry.location.lat(),
-        lng: results[0].geometry.location.lng(),
-      });
+      const lat = results[0].geometry.location.lat();
+      const lng = results[0].geometry.location.lng();
+      console.log(lat, lng);
+      store.lat = lat;
+      store.lng = lng;
+
+      //const storeUpdated  ={...store, lat:...}
       console.log(store);
+
+      props.submitHandler(store, setErrors);
     });
-    props.submitHandler(store, setErrors);
   };
   const changeHandler = (e) => {
     setStore({ ...store, [e.target.name]: e.target.value });
+
     console.log(store);
   };
   return (

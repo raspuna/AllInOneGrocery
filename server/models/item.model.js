@@ -7,6 +7,7 @@ const ItemSchema = new mongoose.Schema(
       type: String,
       required: [true, "Grocery name is required"],
       minlength: [3, "Product name must have at least 3 characters"],
+      text: true,
     },
     itemClass: {
       type: String,
@@ -20,7 +21,6 @@ const ItemSchema = new mongoose.Schema(
       ],
       // required: [true, "Please select what type of product this is"],
     },
-    // image???
     itemQuantity: {
       type: Number,
       required: [true, "Please include the quanity for this product "],
@@ -36,6 +36,11 @@ const ItemSchema = new mongoose.Schema(
     itemPrice: {
       type: String,
       required: [true, "Please include a price"],
+    },
+    itemImage: {
+      type: String,
+      required: [true, "Please include a image"],
+      data: Buffer,
     },
     groceryId: {
       type: mongoose.Schema.Types.ObjectId,
