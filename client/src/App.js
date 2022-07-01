@@ -12,6 +12,8 @@ import AdminMain from "./components/store/AdminMain";
 import OneStore from "./components/store/OneStore";
 import EditItem from "./components/items/EditItem";
 import ViewItem from "./components/items/viewOneGroceryItem";
+import "swiper/css/bundle";
+import "./styles.css";
 
 const App = () => {
   return (
