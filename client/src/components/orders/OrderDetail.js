@@ -9,7 +9,6 @@ function OrderDetail(props) {
   const [cart, setCart] = useState([]);
   const [itemPriceTotal, setItemPriceTotal] = useState(0);
   const [cookies, setCookie, removeCookie] = useCookies(["cart"]);
-
   const sumPrice = (itemList) => {
     const reducer = (acc, item) => {
       console.log(item._id, cookies.cart);
@@ -43,6 +42,9 @@ function OrderDetail(props) {
       .catch((err) => console.log(err));
   };
   useEffect(() => {
+    if (!("cart" in cookies)) {
+      setCookie("cart", {}, { path: "/" });
+    }
     getItemInCart();
   }, [cookies]);
   return (
