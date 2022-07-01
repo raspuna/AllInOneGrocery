@@ -6,7 +6,7 @@ import ViewItems from "./ViewItems";
 
 function OneStore() {
   const { storeId, category } = useParams();
-  console.log(storeId, category);
+  //console.log(storeId, category);
   const [groceries, setGroceries] = useState([]);
   useEffect(() => {
     const url = category

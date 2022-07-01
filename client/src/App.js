@@ -7,7 +7,6 @@ import GoogleMapAPI from "./components/util/GoogleMapPlace";
 import Index from "./components/Index";
 import NewAdmin from "./components/user/NewAdmin";
 import AddStore from "./components/store/AddStore";
-import GroceryList from "./components/items/groceryList";
 import AddGrocery from "./components/items/AddGrocery";
 import AdminMain from "./components/store/AdminMain";
 import OneStore from "./components/store/OneStore";
@@ -35,7 +34,6 @@ const App = () => {
             element={<OneStore />}
           ></Route>
 
-          <Route path="/allGroceries" element={<GroceryList />}></Route>
           <Route path="/item/:id/edit" element={<EditItem />}></Route>
           <Route path="/item/:id" element={<ViewItem />} />
         </Routes>
