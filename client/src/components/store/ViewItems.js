@@ -69,7 +69,7 @@ function ViewItems(props) {
                   </Card.Text>
                   <Link to={`/item/${grocery._id}`}>Details</Link>
                   <Link to={`/item/${grocery._id}/edit`}> edit</Link>
-                  <CartButton grocery={grocery} />
+                  <CartButton grocery={grocery} isCart={false} />
                 </Card.Body>
               </Card>
             </div>

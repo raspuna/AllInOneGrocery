@@ -9,24 +9,26 @@ function OrderDetail(props) {
   const [cart, setCart] = useState([]);
   const [itemPriceTotal, setItemPriceTotal] = useState(0);
   const [cookies, setCookie, removeCookie] = useCookies(["cart"]);
-  const reducer = (acc, item) => {
-    console.log(item._id, cookies.cart);
-    return acc + item.itemPrice * cookies.cart[item._id];
-  };
-  const calcSum = () => {
-    console.log("called calcSum");
-    var sum = 0;
-    if (!cart) {
-      console.log("missing", cart);
-      return sum;
-    }
-    const newSum = cart.reduce(reducer, sum);
-    console.log(newSum);
 
-    return newSum;
+  const sumPrice = (itemList) => {
+    const reducer = (acc, item) => {
+      console.log(item._id, cookies.cart);
+      return acc + item.itemPrice * cookies.cart[item._id];
+    };
+    var sum = itemList.reduce(reducer, 0);
+    return sum;
   };
-  useEffect(() => {
-    console.log(cookies.cart);
+  const handleChange = () => {
+    console.log("called handleChange");
+    setItemPriceTotal(sumPrice(cart));
+  };
+  const handleRemove = (id) => {
+    setCart(cart.filter((item) => item._id !== id));
+    delete cookies.cart[id];
+    setCookie("cart", cookies.cart, { path: "/" });
+    handleChange();
+  };
+  const getItemInCart = () => {
     const itemList = Object.keys(cookies.cart);
     console.log(itemList);
     axios
@@ -36,34 +38,30 @@ function OrderDetail(props) {
       .then((res) => {
         console.log(res.data);
         setCart(res.data);
-        const newSum = calcSum();
-        setItemPriceTotal(newSum);
+        setItemPriceTotal(sumPrice(res.data));
       })
       .catch((err) => console.log(err));
-    //calcSum();
-  }, []);
-  const handleRemove = (id) => {
-    const arr = cart.filter((item) => item._id !== id);
-    setCart(arr);
-    const newSum = calcSum();
-    delete cookies.cart[id];
-    console.log(cookies.cart);
-    setCookie("cart", cookies.cart, { path: "/" });
-    setItemPriceTotal(newSum);
   };
+  useEffect(() => {
+    getItemInCart();
+  }, [cookies]);
   return (
     <div>
       {cart &&
         cart.map((item) => {
           return (
             <div key={item._id}>
-              {item.itemName} ${item.itemPrice} {cookies.cart[item._id]}
-              <CartButton grocery={item} />
-              <Button onClick={() => handleRemove(item._id)}>Remove</Button>
+              {item.itemName} ${item.itemPrice}
+              <CartButton
+                grocery={item}
+                isCart={true}
+                handleRemove={handleRemove}
+                handleChange={handleChange}
+              />
             </div>
           );
         })}
-      sum: $ {itemPriceTotal}
+      total: $ {itemPriceTotal.toFixed(2)}
     </div>
   );
 }

@@ -21,7 +21,6 @@ import LoginButton from "./user/LoginButton";
 import Logout from "./user/Logout";
 import axios from "axios";
 import OrderDetail from "./orders/OrderDetail";
-import LogIn from "./user/Login";
 
 function Header(props) {
   const [searchText, setSearchText] = useState("");
