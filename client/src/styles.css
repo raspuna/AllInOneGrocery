@@ -6,7 +6,7 @@
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: rgb(243, 240, 240);
+
   border-radius: 0.5rem;
 
   /* Center slide text vertically */
@@ -80,7 +80,7 @@
 
 .title {
   margin-top: 0.5rem;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   font-family: "fira code", sans-serif;
 }
@@ -88,8 +88,15 @@
   font-size: 9px;
   font-weight: 800;
   display: inline-block;
+  margin-top: 1rem;
 }
 .felx {
   display: flex;
   flex-direction: column;
+  line-height: 1%;
+}
+
+.info2 {
+  margin-top: 0.5rem;
+  color: rgb(116, 117, 120);
 }

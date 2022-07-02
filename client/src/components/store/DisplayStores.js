@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper";
+import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -34,7 +34,7 @@ function DisplayStores(props) {
         setStoreList(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [setStoreList]);
 
   console.log(storeList);
 
@@ -57,21 +57,25 @@ function DisplayStores(props) {
 
           <Col>
             <Swiper
-              slidesPerView={5}
+              slidesPerView={9}
               spaceBetween={30}
               loop={true}
               pagination={{
                 clickable: true,
               }}
-              navigation={true}
-              modules={[Pagination, Navigation]}
+              modules={[Pagination]}
               className="mySwiper"
             >
               <SwiperSlide className="felx">
                 <div className="circ">
                   <ALDI />
                 </div>
-                <h1 className="title"> Delivery & Pickup</h1>
+
+                <h1 className="title"> Delivery & Pickup </h1>
+                <span className="info info2">Butcher Shop</span>
+                <span className="info info2">Deli</span>
+                <span className="info info2">Produce</span>
+
                 <span className="info"> 20.5 mi away </span>
               </SwiperSlide>
               {/*  */}
