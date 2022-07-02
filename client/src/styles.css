@@ -1,12 +1,13 @@
 .swiper {
-  width: 100%;
+  width: 20rem;
   height: 100%;
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: rgb(248, 246, 246);
+  background: rgb(243, 240, 240);
+  border-radius: 2rem;
 
   /* Center slide text vertically */
   display: -webkit-box;
@@ -23,20 +24,13 @@
   align-items: center;
 }
 
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-}
 .swiper:hover {
   cursor: pointer;
 }
 
 .swiper {
-  width: 100%;
-  height: 200px;
+  width: 100rem;
+  height: 150px;
   margin: 20px auto;
 }
 .append-buttons {
@@ -59,7 +53,6 @@
 .swiper-button-next,
 .swiper-button-prev {
   color: rgba(137, 129, 129, 0.275);
- 
 }
 
 .swiper-button-prev:hover {
@@ -68,4 +61,35 @@
 
 .swiper-button-next:hover {
   color: rgba(137, 129, 129, 0.641);
+}
+.spring-slider .swiper-slide img {
+  width: 90%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.circ {
+  border: 1px solid;
+  border-radius: 50%;
+  object-fit: contain;
+
+  aspect-ratio: auto 60 / 60;
+}
+
+.title {
+  margin-top: 0.5rem;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: "fira code", sans-serif;
+}
+.info {
+  font-size: 9px;
+  font-weight: 800;
+  display: inline-block;
+}
+.felx {
+  display: flex;
+  flex-direction: column;
 }

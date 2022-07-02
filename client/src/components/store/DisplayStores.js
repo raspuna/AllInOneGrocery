@@ -7,7 +7,17 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Container, Row, Col } from "react-bootstrap";
-import { ALDI } from "../AssetsIndex";
+import {
+  ALDI,
+  CVS,
+  BIGY,
+  FRESH,
+  SHAWS,
+  STOPSHOP,
+  PRICERITE,
+  WALMART,
+  WEGMANS,
+} from "../AssetsIndex";
 
 // import GoogleMapAPI from "./util/GoogleMapPlace";
 
@@ -46,9 +56,8 @@ function DisplayStores(props) {
             ))}
 
           <Col>
-            {" "}
             <Swiper
-              slidesPerView={7}
+              slidesPerView={5}
               spaceBetween={30}
               loop={true}
               pagination={{
@@ -58,17 +67,77 @@ function DisplayStores(props) {
               modules={[Pagination, Navigation]}
               className="mySwiper"
             >
-              <SwiperSlide>
-                <ALDI />
+              <SwiperSlide className="felx">
+                <div className="circ">
+                  <ALDI />
+                </div>
+                <h1 className="title"> Delivery & Pickup</h1>
+                <span className="info"> 20.5 mi away </span>
               </SwiperSlide>
-              <SwiperSlide>Slide 2</SwiperSlide>
-              <SwiperSlide>Slide 3</SwiperSlide>
-              <SwiperSlide>Slide 4</SwiperSlide>
-              <SwiperSlide>Slide 5</SwiperSlide>
-              <SwiperSlide>Slide 6</SwiperSlide>
-              <SwiperSlide>Slide 7</SwiperSlide>
-              <SwiperSlide>Slide 8</SwiperSlide>
-              <SwiperSlide>Slide 9</SwiperSlide>
+              {/*  */}
+              <SwiperSlide className="felx">
+                <div className="circ">
+                  <BIGY />
+                </div>
+                <h1 className="title"> Delivery & Pickup</h1>
+                <span className="info"> 10.2 mi away </span>
+              </SwiperSlide>
+              {/*  */}
+              <SwiperSlide className="felx">
+                <div className="circ">
+                  <CVS />
+                </div>
+                <h1 className="title"> Delivery & Pickup</h1>
+                <span className="info"> 10.2 mi away </span>
+              </SwiperSlide>
+              {/*  */}
+              <SwiperSlide className="felx">
+                <div className="circ">
+                  <FRESH />
+                </div>
+                <h1 className="title"> Delivery & Pickup</h1>
+                <span className="info"> 10.2 mi away </span>
+              </SwiperSlide>
+              {/*  */}
+              <SwiperSlide className="felx">
+                <div className="circ">
+                  <SHAWS />
+                </div>
+                <h1 className="title"> Delivery & Pickup</h1>
+                <span className="info"> 10.2 mi away </span>
+              </SwiperSlide>
+              {/*  */}
+              <SwiperSlide className="felx">
+                <div className="circ">
+                  <STOPSHOP />
+                </div>
+                <h1 className="title"> Delivery & Pickup</h1>
+                <span className="info"> 10.2 mi away </span>
+              </SwiperSlide>
+              {/*  */}
+              <SwiperSlide className="felx">
+                <div className="circ">
+                  <WALMART />
+                </div>
+                <h1 className="title"> Delivery & Pickup</h1>
+                <span className="info"> 10.2 mi away </span>
+              </SwiperSlide>
+              {/*  */}
+              <SwiperSlide className="felx">
+                <div className="circ">
+                  <PRICERITE />
+                </div>
+                <h1 className="title"> Delivery & Pickup</h1>
+                <span className="info"> 10.2 mi away </span>
+              </SwiperSlide>
+              {/*  */}
+              <SwiperSlide className="felx">
+                <div className="circ">
+                  <WEGMANS />
+                </div>
+                <h1 className="title"> Delivery & Pickup</h1>
+                <span className="info"> 10.2 mi away </span>
+              </SwiperSlide>
             </Swiper>
           </Col>
         </Row>
