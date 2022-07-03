@@ -1,25 +1,3 @@
-.that-container {
-  display: flex;
-  justify-content: space-around;
-  max-width: 2560px !important;
-  width: 100% !important;
-  outline: none;
-  border: none;
-  align-items: center;
-}
-
-.container,
-.container-lg,
-.container-md,
-.container-sm,
-.container-xl,
-.container-xxl,
-.navbar {
-  max-width: 2560px !important;
-  justify-content: center;
-  align-items: center;
-}
-
 html,
 body {
   max-width: 3840px;
@@ -32,7 +10,7 @@ body {
   align-items: center;
 }
 .search-input {
-  padding: 0.2rem 10rem;
+  width: 40rem !important;
   border: none;
   outline: none;
   border-radius: 2rem !important;
@@ -42,6 +20,15 @@ body {
   align-items: center;
 }
 
+
+.cont,
+div.col {
+  display: flex;
+  justify-content: space-around !important;
+}
+div.navbar-nav {
+  margin-left: 5rem !important;
+}
 .form-control:focus {
   box-shadow: none !important;
 }

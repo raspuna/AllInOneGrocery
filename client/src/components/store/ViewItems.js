@@ -5,6 +5,7 @@ import Header from "../Header";
 import Category from "./Category";
 import axios from "axios";
 import CartButton from "../orders/CartButton";
+import "./view.css";
 
 function ViewItems(props) {
   const { storeId, groceries, setGroceries } = props;
@@ -53,7 +54,8 @@ function ViewItems(props) {
 
       <div>
         <Category storeId={storeId} />
-        <div className="d-flex justify-content-around flex-wrap">
+
+        <div>
           {groceries.map((grocery) => (
             <div key={grocery._id}>
               <Card style={{ width: "200px" }}>

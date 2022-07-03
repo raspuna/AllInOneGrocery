@@ -1,12 +1,13 @@
 .swiper {
-  width: 100%;
+  width: 20rem;
   height: 100%;
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
+
+  border-radius: 0.5rem;
 
   /* Center slide text vertically */
   display: -webkit-box;
@@ -23,16 +24,13 @@
   align-items: center;
 }
 
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.swiper:hover {
+  cursor: pointer;
 }
 
 .swiper {
-  width: 100%;
-  height: 300px;
+  width: 100rem;
+  height: 200px;
   margin: 20px auto;
 }
 .append-buttons {
@@ -43,11 +41,67 @@
 .append-buttons button {
   display: inline-block;
   cursor: pointer;
-  border: 1px solid #007aff;
-  color: #007aff;
+  border: 1px solid #007bff97;
+  color: #007bff8a;
   text-decoration: none;
   padding: 4px 10px;
   border-radius: 4px;
   margin: 0 10px;
   font-size: 13px;
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: rgba(137, 129, 129, 0.275);
+}
+
+.swiper-button-prev:hover {
+  color: rgba(137, 129, 129, 0.641);
+}
+
+.swiper-button-next:hover {
+  color: rgba(137, 129, 129, 0.641);
+}
+.spring-slider .swiper-slide img {
+  width: 90%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.circ {
+  border: 1px solid;
+  border-radius: 50%;
+  object-fit: contain;
+
+  aspect-ratio: auto 60 / 60;
+}
+
+.title {
+  margin-top: 0.5rem;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: "fira code", sans-serif;
+}
+.info {
+  font-size: 9px;
+  font-weight: 800;
+  display: inline-block;
+  margin-top: 1rem;
+}
+.felx {
+  display: flex;
+  flex-direction: column;
+  line-height: 1%;
+}
+
+.info2 {
+  margin-top: 0.5rem;
+  color: rgb(116, 117, 120);
+}
+
+
+
+
+

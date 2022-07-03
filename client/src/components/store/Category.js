@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function Category(props) {
@@ -12,15 +13,18 @@ function Category(props) {
     "Miscellaneous",
   ];
   return (
-    <div>
+    <Container>
       {categories.map((category) => (
-        <div key={category}>
-          <Link to={`/stores/${storeId}/collections/${category}`}>
-            {category}
-          </Link>
-        </div>
+        <Row>
+          <div key={category}>
+            <Link to={`/stores/${storeId}/collections/${category}`}>
+              {category}
+            </Link>
+          </div>
+        </Row>
       ))}
-    </div>
+      <div> </div>
+    </Container>
   );
 }
 
